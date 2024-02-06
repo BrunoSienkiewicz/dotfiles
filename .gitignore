@@ -3,8 +3,10 @@
 !.gitignore
 !.bashrc
 !.zshrc
+!.zshenv
 !/.config
 
 /.config/*
 !/.config/nvim/
 !/.config/tmux/
+!/.config/zsh/
