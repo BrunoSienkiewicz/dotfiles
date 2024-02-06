@@ -4,6 +4,7 @@
 !.bashrc
 !.zshrc
 !.zshenv
+!.profile
 !/.config
 
 /.config/*
