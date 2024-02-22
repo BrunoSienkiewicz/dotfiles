@@ -1,7 +1,9 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+
+local packer_bootstrap = true
+
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -30,8 +32,8 @@ return require('packer').startup(function(use)
  branch = 'v3.x',
   requires = {
     --- Uncomment the two plugins below if you want to manage the language servers from neovim
-    -- {'williamboman/mason.nvim'},
-    -- {'williamboman/mason-lspconfig.nvim'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
 
     -- LSP Support
     {'neovim/nvim-lspconfig'},
@@ -41,5 +43,8 @@ return require('packer').startup(function(use)
     {'L3MON4D3/LuaSnip'},
   }
 }
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
  
