@@ -6,9 +6,13 @@
 !.zshenv
 !.profile
 !/.config
+!setup.sh
 
 /.config/*
 !/.config/nvim/
 !/.config/tmux/
 !/.config/zsh/
+
 /.config/zsh/oh-my-zsh
+/.config/zsh/.zhistory
+/.config/zsh/.zcoredump*
