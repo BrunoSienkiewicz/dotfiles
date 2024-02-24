@@ -10,7 +10,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here 
     -- with the ones you want to install
-    ensure_installed = {'rust_analyzer', 'lua_ls', 'pylyzer', 'bash-language-server'},
+    ensure_installed = {'rust_analyzer', 'lua_ls', 'pylyzer', 'bashls'},
     handlers = {
       lsp_zero.default_setup,
     },
