@@ -67,7 +67,7 @@ fi
 
 # install tmux
 dpkg -l | grep -q "^ii  tmux" > /dev/null || apt-get update && apt-get install -y tmux
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm $dotfiles_dir/.config/tmux/plugins/tpm
 
 rm $config_dir/tmux
 create_symlinks "$dotfiles_dir/.config/tmux" "$config_dir"

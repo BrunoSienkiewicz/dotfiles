@@ -1,5 +1,7 @@
 .config/nvim/plugin/packer_compiled.lua
 
+.config/tmux/plugins
+
 .config/zsh/oh-my-zsh
 .config/zsh/.zhistory
 .config/zsh/.zcompdump*
