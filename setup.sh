@@ -1,11 +1,10 @@
 #!/bin/bash
 
-dotfiles_dir="/home/$SUDO_USER/.dotfiles" 
-config_dir="/home/$SUDO_USER/.config"
-target_user_home="/home/$SUDO_USER"
+export dotfiles_dir="/home/$SUDO_USER/.dotfiles" 
+export config_dir="/home/$SUDO_USER/.config"
+export target_user_home="/home/$SUDO_USER"
 
 # prerequisites
-apt get update
 dpkg -l | grep -q "^ii  git" > /dev/null || apt-get update && apt-get install -y git
 dpkg -l | grep -q "^ii  make" > /dev/null || apt-get update && apt-get install -y make
 dpkg -l | grep -q "^ii  cmake" > /dev/null || apt-get update && apt-get install -y cmake
@@ -31,19 +30,6 @@ create_symlinks() {
     echo "Symlinked: $source to $target"
 }
 
-# Create symlinks for config files
-for file in "$dotfiles_dir"/* "$dotfiles_dir"/.[!.]*; do
-    if [ -f "$file" ]; then
-        create_symlinks "$file" "$target_user_home"
-    fi
-done
-
-for dir in "$dotfiles_dir/.config"/* "$dotfiles_dir/.config"/.[!.]*; do
-    if [ -d "$dir" ]; then
-        create_symlinks "$dir" "$target_user_home/.config"
-    fi
-done
-
 # install neovim
 if ! nvim --version > /dev/null; then
 	git clone https://github.com/neovim/neovim /etc/neovim
@@ -57,35 +43,57 @@ fi
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-nvim -c ":so $config_dir/nvim/lua/bruno/packer.lua"
+rm $config_dir/nvim
+create_symlinks "$dotfiles_dir/.config/nvim" "$config_dir"
 
 # nerd font
 mkdir -p $target_user_home/.local/share/fonts
-wget -P $target_user_home/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/UbuntuMono.zip \
-    && cd $target_user_home/.local/share/fonts \
-    && unzip UbuntuMono.zip -d $target_user_home/.fonts\
-    && rm UbuntuMono.zip \
-    && fc-cache -fv
 
-mkdir -p $target_user_home/.local/share/fonts
-wget -P $target_user_home/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/RobotoMono.zip \
-    && cd $target_user_home/.local/share/fonts \
-    && unzip RobotoMono.zip -d $target_user_home/.fonts\
-    && rm RobotoMono.zip \
-    && fc-cache -fv
+if [ ! -f $target_user_home/.fonts/UbuntuMono* ]; then 
+    wget -P $target_user_home/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/UbuntuMono.zip \
+        && cd $target_user_home/.local/share/fonts \
+        && unzip UbuntuMono.zip -d $target_user_home/.fonts\
+        && rm UbuntuMono.zip \
+        && fc-cache -fv
+fi
+
+if [ ! -f $target_user_home/.fonts/RobotoMono* ]; then
+    wget -P $target_user_home/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/RobotoMono.zip \
+        && cd $target_user_home/.local/share/fonts \
+        && unzip RobotoMono.zip -d $target_user_home/.fonts\
+        && rm RobotoMono.zip \
+        && fc-cache -fv
+fi
 
 # install tmux
 dpkg -l | grep -q "^ii  tmux" > /dev/null || apt-get update && apt-get install -y tmux
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
+rm $config_dir/tmux
+create_symlinks "$dotfiles_dir/.config/tmux" "$config_dir"
+
 # install zsh
 dpkg -l | grep -q "^ii  zsh" > /dev/null || apt-get update && apt-get install -y zsh
-export ZSH="$config_dir/zsh/oh-my-zsh" 
+
+rm -rf $config_dir/zsh
+export ZSH="$dotfiles_dir/.config/zsh/oh-my-zsh" 
+
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 chsh -s $(which zsh)
+
+create_symlinks "$dotfiles_dir/.config/zsh" "$config_dir"
 
 # plugins 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${config_dir}/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${config_dir}/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions
 source $config_dir/zsh/.zshrc
+
+
+# Create symlinks for config files
+for file in "$dotfiles_dir"/* "$dotfiles_dir"/.[!.]*; do
+    if [ -f "$file" ]; then
+        create_symlinks "$file" "$target_user_home"
+    fi
+done
+
