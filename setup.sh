@@ -12,6 +12,7 @@ dpkg -l | grep -q "^ii  curl" > /dev/null || apt-get update && apt-get install -
 dpkg -l | grep -q "^ii  gettext" > /dev/null || apt-get update && apt-get install -y gettext
 dpkg -l | grep -q "^ii  nodejs" > /dev/null || apt-get update && apt-get install -y nodejs
 dpkg -l | grep -q "^ii  npm" > /dev/null || apt-get update && apt-get install -y npm
+dpkg -l | grep -q "^ii  ripgrep" > /dev/null || apt-get update && apt-get install -y ripgrep
 
 # rust
 export CARGO_HOME=$target_user_home/.cargo
