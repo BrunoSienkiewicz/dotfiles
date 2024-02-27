@@ -15,16 +15,14 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use({ 'catppuccin/nvim',
-  as = 'catppuccin',
-  config = function()
-      vim.cmd('colorscheme catppuccin')
-  end
-})
-use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-}
+  use { 'catppuccin/nvim',as = 'catppuccin',
+    config = function() vim.cmd('colorscheme catppuccin') end
+  }
+
+  use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
@@ -38,22 +36,43 @@ use {
   }
 
   use {
-  'VonHeikemen/lsp-zero.nvim',
- branch = 'v3.x',
-  requires = {
-    --- Uncomment the two plugins below if you want to manage the language servers from neovim
-    {'williamboman/mason.nvim'},
-    {'williamboman/mason-lspconfig.nvim'},
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v3.x',
+      requires = {
+          --- Uncomment the two plugins below if you want to manage the language servers from neovim
+          {'williamboman/mason.nvim'},
+          {'williamboman/mason-lspconfig.nvim'},
 
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'L3MON4D3/LuaSnip'},
+          -- LSP Support
+          {'neovim/nvim-lspconfig'},
+          -- Autocompletion
+          {'hrsh7th/nvim-cmp'},
+          {'hrsh7th/cmp-nvim-lsp'},
+          {'L3MON4D3/LuaSnip'},
+      }
   }
-}
+
+  -- autocompletion
+  use("hrsh7th/nvim-cmp") -- completion plugin
+  use("hrsh7th/cmp-buffer") -- source for text in buffer
+  use("hrsh7th/cmp-path") -- source for file system paths
+
+  -- snippets
+  use("L3MON4D3/LuaSnip") -- snippet engine
+  use("saadparwaiz1/cmp_luasnip") -- for autocompletion
+  use("rafamadriz/friendly-snippets") -- useful snippets
+
+  use {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      config = function()
+          require("nvim-autopairs").setup {}
+      end
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
 end)
+
+

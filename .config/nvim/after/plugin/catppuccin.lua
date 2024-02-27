@@ -66,10 +66,14 @@ require("catppuccin").setup({
         nvimtree = true,
         treesitter = true,
         notify = false,
+        mason = true,
         mini = {
             enabled = true,
             indentscope_color = "",
         },
+        telescope = {
+            enabled = true,
+        }
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })
