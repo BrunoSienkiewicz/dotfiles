@@ -33,5 +33,9 @@ cmp.setup({
         { name = "buffer" }, -- text within the current buffer
         { name = "path" }, -- file system paths
     }),
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    }
 })
 
