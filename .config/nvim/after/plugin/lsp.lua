@@ -11,12 +11,22 @@ require('mason-lspconfig').setup({
     -- Replace the language servers listed here 
     -- with the ones you want to install
     ensure_installed = {
+      -- lsp
       'rust_analyzer',
       'lua_ls',
       'bashls',
       'pyright',
       'tsserver',
       'clangd',
+      -- -- formatters
+      -- 'black',
+      -- 'isort',
+      -- 'prettier',
+      -- 'stylua',
+      -- 'clang-format',
+      -- -- linters
+      -- 'eslint_d',
+      -- 'ruff',
     },
     handlers = {
       lsp_zero.default_setup,
@@ -24,8 +34,6 @@ require('mason-lspconfig').setup({
 })
 
 local lspconfig = require('lspconfig')
-local on_attach = base.on_attach
-local capabilities = base.capabilities
 
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
