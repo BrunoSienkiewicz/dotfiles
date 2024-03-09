@@ -29,9 +29,20 @@ return require("lazy").setup({
 
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons", opt = true } },
 
-	"nvim-treesitter/nvim-treesitter",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = function()
+			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+	},
 	"theprimeagen/harpoon",
 	"mbbill/undotree",
+
+	-- Git
+	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -65,12 +76,7 @@ return require("lazy").setup({
 	"hrsh7th/nvim-cmp", -- completion plugin
 	"hrsh7th/cmp-buffer", -- source for text in buffer
 	"hrsh7th/cmp-path", -- source for file system paths
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()({})
-		end,
-	},
+	"numToStr/Comment.nvim",
 
 	-- snippets
 	"L3MON4D3/LuaSnip", -- snippet engine
