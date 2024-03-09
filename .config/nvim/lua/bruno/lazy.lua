@@ -41,6 +41,16 @@ return require("lazy").setup({
 	"theprimeagen/harpoon",
 	"mbbill/undotree",
 
+	-- mini
+	{
+		"echasnovski/mini.cursorword",
+		version = "*",
+	},
+	{
+		"echasnovski/mini.files",
+		version = "*",
+	},
+
 	-- Git
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
