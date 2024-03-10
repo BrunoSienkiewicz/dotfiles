@@ -50,6 +50,10 @@ return require("lazy").setup({
 		"echasnovski/mini.files",
 		version = "*",
 	},
+	{
+		"echasnovski/mini.starter",
+		version = "*",
+	},
 
 	-- Git
 	"lewis6991/gitsigns.nvim",

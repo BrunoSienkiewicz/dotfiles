@@ -14,7 +14,6 @@ vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -30,19 +29,35 @@ end)
 
 vim.keymap.set("n", "L", "$")
 vim.keymap.set("n", "H", "^")
---
+
 -- -- Press 'U' for redo
 vim.keymap.set("n", "U", "<C-r>")
---
-vim.keymap.set("n", "<leader>d", function()
+
+-- LSP
+vim.keymap.set("n", "<leader>dg", function()
 	vim.diagnostic.open_float({
 		border = "rounded",
 	})
 end)
-vim.keymap.set("n", "<leader>ld", vim.diagnostic.setqflist)
+vim.keymap.set("n", "<leader>dl", vim.diagnostic.setqflist)
+vim.keymap.set("n", "K", vim.lsp.buf.hover)
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 
--- Open the qflist
+-- QFList
 vim.keymap.set("n", "<leader>co", ":copen<cr>zz")
-
--- Close the qflist
 vim.keymap.set("n", "<leader>cc", ":cclose<cr>zz")
+
+-- Telescope
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", function()
+	builtin.buffers({ sort_mru = true, ignore_current_buffer = true })
+end)
+vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+vim.keymap.set("n", "<leader>fs", function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
+
+-- Git
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)

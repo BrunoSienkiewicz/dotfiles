@@ -6,6 +6,7 @@ require("nvim-treesitter.configs").setup({
 		"cpp",
 		"lua",
 		"rust",
+		"go",
 		"bash",
 	},
 
