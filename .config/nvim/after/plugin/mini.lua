@@ -6,15 +6,17 @@ minicursorword.setup({
 
 local minifiles = require("mini.files")
 
--- minifiles.setup({
--- 	content = {
--- 		prefix = function() end,
--- 	},
--- 	windows = {
--- 		preview = true,
--- 		width_preview = 80,
--- 	},
--- })
+minifiles.setup({
+	content = {},
+	windows = {
+		preview = true,
+		width_preview = 80,
+	},
+	mappings = {
+		go_in = "L",
+		go_in_plus = "l",
+	},
+})
 
 local ministarter = require("mini.starter")
 

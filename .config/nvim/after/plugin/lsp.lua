@@ -18,6 +18,7 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"tsserver",
 		"clangd",
+		"gopls",
 	},
 	handlers = {
 		lsp_zero.default_setup,
@@ -25,6 +26,7 @@ require("mason-lspconfig").setup({
 })
 
 local lspconfig = require("lspconfig")
+local util = require("lspconfig/util")
 
 lspconfig.pyright.setup({})
 lspconfig.tsserver.setup({})
@@ -35,6 +37,20 @@ lspconfig.rust_analyzer.setup({
 	},
 })
 lspconfig.clangd.setup({})
+lspconfig.gopls.setup({
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gowork", "gotimpl" },
+	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			completeUnimported = true,
+			usePlaceholders = true,
+			analyses = {
+				unusedparams = true,
+			},
+		},
+	},
+})
 
 require("mason-tool-installer").setup({
 	ensure_installed = {
@@ -45,6 +61,7 @@ require("mason-tool-installer").setup({
 		"pyright",
 		"tsserver",
 		"clangd",
+		"gopls",
 		"bash-language-server",
 		"lua-language-server",
 		"vim-language-server",

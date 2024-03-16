@@ -59,5 +59,16 @@ vim.keymap.set("n", "<leader>fs", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
+-- Harpoon
+vim.keymap.set("n", "<leader>a", require("harpoon.mark").add_file)
+vim.keymap.set("n", "<C-e>", require("harpoon.ui").toggle_quick_menu)
+
+-- MiniFiles
+vim.keymap.set("n", "<C-b>", function()
+	if not require("mini.files").close() then
+		require("mini.files").open()
+	end
+end)
+
 -- Git
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)

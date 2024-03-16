@@ -83,6 +83,8 @@ return require("lazy").setup({
 		},
 	},
 
+	"github/copilot.vim",
+
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	"stevearc/conform.nvim",
 
