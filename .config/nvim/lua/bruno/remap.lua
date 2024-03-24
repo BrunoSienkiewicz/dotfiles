@@ -69,6 +69,9 @@ vim.keymap.set("n", "<C-b>", function()
 		require("mini.files").open()
 	end
 end)
+vim.keymap.set("n", "<ESC>", function()
+	require("mini.files").close()
+end)
 
 -- Git
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)

@@ -8,6 +8,7 @@ require("nvim-treesitter.configs").setup({
 		"rust",
 		"go",
 		"bash",
+		"yaml",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
