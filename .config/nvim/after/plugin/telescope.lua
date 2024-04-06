@@ -12,7 +12,9 @@ telescope.setup({
 			hidden = true,
 		},
 		live_grep = {
-			hidden = true,
+			additional_args = function()
+				return { "--hidden" }
+			end,
 		},
 	},
 })

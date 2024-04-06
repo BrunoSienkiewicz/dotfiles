@@ -39,6 +39,13 @@ return require("lazy").setup({
 		},
 	},
 	"theprimeagen/harpoon",
+	{
+		"ThePrimeagen/refactoring.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 	"mbbill/undotree",
 
 	-- mini

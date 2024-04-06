@@ -27,8 +27,21 @@ vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
 
+-- Navigating
 vim.keymap.set("n", "L", "$")
 vim.keymap.set("n", "H", "^")
+vim.keymap.set("n", "sh", "<C-w>h")
+vim.keymap.set("n", "sj", "<C-w>j")
+vim.keymap.set("n", "sk", "<C-w>k")
+vim.keymap.set("n", "sl", "<C-w>l")
+
+-- Splitting
+vim.keymap.set("n", "<leader>v", "<cmd>vsplit<CR>")
+vim.keymap.set("n", "<leader>h", "<cmd>split<CR>")
+
+-- Increment and decrement numbers
+vim.keymap.set("n", "+", "<C-a>")
+vim.keymap.set("n", "-", "<C-x>")
 
 -- -- Press 'U' for redo
 vim.keymap.set("n", "U", "<C-r>")
@@ -38,6 +51,9 @@ vim.keymap.set("n", "<leader>dg", function()
 	vim.diagnostic.open_float({
 		border = "rounded",
 	})
+end)
+vim.keymap.set("n", ",C-j>", function()
+	vim.diagnostic.goto_next()
 end)
 vim.keymap.set("n", "<leader>dl", vim.diagnostic.setqflist)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)

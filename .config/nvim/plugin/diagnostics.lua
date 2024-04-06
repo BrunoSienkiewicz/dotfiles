@@ -1,5 +1,5 @@
 vim.diagnostic.config({
-	virtual_text = false, -- Turn off inline diagnostics
+	virtual_text = true,
 })
 
 vim.api.nvim_create_user_command("ToggleDiagnostics", function()
