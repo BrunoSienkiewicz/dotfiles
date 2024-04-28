@@ -46,7 +46,6 @@ return require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
-	"mbbill/undotree",
 
 	-- mini
 	{

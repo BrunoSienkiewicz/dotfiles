@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>dp", [["_dP]])
