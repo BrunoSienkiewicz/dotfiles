@@ -7,7 +7,9 @@ vim.keymap.set("x", "<leader>dp", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
+vim.keymap.set({ "n", "v" }, "<leader>pp", "<nop>")
 vim.keymap.set("n", "<leader>P", [["+P]])
+vim.keymap.set("n", "<leader>PP", "<nop>")
 
 vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]])
 
