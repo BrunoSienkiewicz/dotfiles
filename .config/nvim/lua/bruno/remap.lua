@@ -48,16 +48,25 @@ vim.keymap.set("n", "-", "<C-x>")
 vim.keymap.set("n", "U", "<C-r>")
 
 -- LSP
+vim.keymap.set("n", "K", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>dg", function()
 	vim.diagnostic.open_float({
 		border = "rounded",
 	})
 end)
+vim.keymap.set("n", ",C-k>", function()
+	vim.diagnostic.goto_prev()
+end)
 vim.keymap.set("n", ",C-j>", function()
 	vim.diagnostic.goto_next()
 end)
 vim.keymap.set("n", "<leader>dl", vim.diagnostic.setqflist)
-vim.keymap.set("n", "K", vim.lsp.buf.hover)
+vim.keymap.set("n", "<leader>lca", function()
+	vim.lsp.buf.code_action()
+end)
+vim.keymap.set("n", "<leader>lrr", function()
+	vim.lsp.buf.references()
+end)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 
 -- QFList
@@ -92,3 +101,5 @@ end)
 
 -- Git
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>")
+vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>")
