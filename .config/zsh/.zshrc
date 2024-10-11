@@ -104,6 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases 
+function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
+
 export PATH="/home/bruno/.local/bin:$PATH"
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
