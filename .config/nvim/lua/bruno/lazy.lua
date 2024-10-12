@@ -76,11 +76,15 @@ return require("lazy").setup({
 			{ "L3MON4D3/LuaSnip" },
 		},
 	},
+  {
+    "stevearc/conform.nvim", -- code formatter
+    branch = "nvim-0.9",
+  },
 
 	-- Tools
 	"github/copilot.vim",
+	"numToStr/Comment.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	"stevearc/conform.nvim",
 	"theprimeagen/harpoon",
 	{
 		"ThePrimeagen/refactoring.nvim",
@@ -104,19 +108,6 @@ return require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 	},
-	{ "Vigemus/iron.nvim" },
-
-	-- autocompletion
-	"hrsh7th/nvim-cmp", -- completion plugin
-	"hrsh7th/cmp-buffer", -- source for text in buffer
-	"hrsh7th/cmp-path", -- source for file system paths
-	"numToStr/Comment.nvim",
-
-	-- snippets
-	"L3MON4D3/LuaSnip", -- snippet engine
-	"saadparwaiz1/cmp_luasnip", -- for autocompletion
-	"rafamadriz/friendly-snippets", -- useful snippets
-
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -124,4 +115,15 @@ return require("lazy").setup({
 			require("nvim-autopairs").setup({})
 		end,
 	},
+
+	-- autocompletion
+	"hrsh7th/nvim-cmp", -- completion plugin
+	"hrsh7th/cmp-buffer", -- source for text in buffer
+	"hrsh7th/cmp-path", -- source for file system paths
+
+	-- snippets
+	"L3MON4D3/LuaSnip", -- snippet engine
+	"saadparwaiz1/cmp_luasnip", -- for autocompletion
+	"rafamadriz/friendly-snippets", -- useful snippets
+
 })

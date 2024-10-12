@@ -16,7 +16,7 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"bashls",
 		"pyright",
-		"tsserver",
+		"ts_ls",
 		"clangd",
 		"gopls",
 	},
@@ -29,7 +29,7 @@ local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 
 lspconfig.pyright.setup({})
-lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
 lspconfig.rust_analyzer.setup({
 	-- Server-specific settings. See `:help lspconfig-setup`
 	settings = {
@@ -59,12 +59,13 @@ require("mason-tool-installer").setup({
 		"lua_ls",
 		"bashls",
 		"pyright",
-		"tsserver",
+		"ts_ls",
 		"clangd",
 		"gopls",
 		"bash-language-server",
 		"lua-language-server",
 		"vim-language-server",
+		"terraform-ls",
 		-- linters / formatters
 		"golangci-lint",
 		"stylua",
@@ -79,5 +80,7 @@ require("mason-tool-installer").setup({
 		"stylua",
 		"clang-format",
 		"eslint_d",
+		"tflint",
+		"ruff",
 	},
 })
