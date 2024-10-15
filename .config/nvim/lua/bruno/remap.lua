@@ -72,16 +72,17 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 -- QFList
 vim.keymap.set("n", "<leader>co", ":copen<cr>zz")
 vim.keymap.set("n", "<leader>cc", ":cclose<cr>zz")
+vim.keymap.set("n", "<leader>fr", [[:cdo %s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Telescope
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>fb", function()
 	builtin.buffers({ sort_mru = true, ignore_current_buffer = true })
 end)
 vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-vim.keymap.set("n", "<leader>fs", function()
+vim.keymap.set("n", "<leader>fg", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
