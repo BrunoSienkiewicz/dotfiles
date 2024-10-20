@@ -33,3 +33,4 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.mouse = "a"
 
+vim.opt.conceallevel = 1

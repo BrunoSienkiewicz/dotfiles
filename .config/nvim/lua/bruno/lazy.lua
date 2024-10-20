@@ -76,10 +76,10 @@ return require("lazy").setup({
 			{ "L3MON4D3/LuaSnip" },
 		},
 	},
-  {
-    "stevearc/conform.nvim", -- code formatter
-    branch = "nvim-0.9",
-  },
+	{
+		"stevearc/conform.nvim", -- code formatter
+		branch = "nvim-0.9",
+	},
 
 	-- Tools
 	"github/copilot.vim",
@@ -115,6 +115,15 @@ return require("lazy").setup({
 			require("nvim-autopairs").setup({})
 		end,
 	},
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "zathura"
+		end,
+	},
 
 	-- autocompletion
 	"hrsh7th/nvim-cmp", -- completion plugin
@@ -125,5 +134,4 @@ return require("lazy").setup({
 	"L3MON4D3/LuaSnip", -- snippet engine
 	"saadparwaiz1/cmp_luasnip", -- for autocompletion
 	"rafamadriz/friendly-snippets", -- useful snippets
-
 })
