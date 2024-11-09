@@ -16,7 +16,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"bashls",
 		"pyright",
-		"terraform-ls",
 		"clangd",
 		"gopls",
 	},
