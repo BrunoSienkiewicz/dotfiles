@@ -69,7 +69,7 @@ return require("lazy").setup({
 			{ "williamboman/mason-lspconfig.nvim" },
 
 			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
+			{ "neovim/nvim-lspconfig", opts = { autoformat = true } },
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp" },
