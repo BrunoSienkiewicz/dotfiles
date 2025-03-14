@@ -23,15 +23,6 @@ return require("lazy").setup({
 
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons", opt = true } },
 
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-	},
 	"theprimeagen/harpoon",
 	{
 		"ThePrimeagen/refactoring.nvim",
@@ -86,13 +77,6 @@ return require("lazy").setup({
 	"numToStr/Comment.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	"theprimeagen/harpoon",
-	{
-		"ThePrimeagen/refactoring.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
