@@ -73,6 +73,7 @@ return require("lazy").setup({
 	},
 
 	-- Tools
+	{ "wakatime/vim-wakatime", lazy = false },
 	"github/copilot.vim",
 	"numToStr/Comment.nvim",
 	"WhoIsSethDaniel/mason-tool-installer.nvim",

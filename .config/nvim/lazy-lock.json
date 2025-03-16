@@ -123,6 +123,10 @@
     "branch": "master",
     "commit": "d4877e54cef67f5af4f950935b1ade19ed6b7370"
   },
+  "vim-wakatime": {
+    "branch": "master",
+    "commit": "cf51327a9e08935569614d1cb24e779ee9f45519"
+  },
   "vimtex": {
     "branch": "master",
     "commit": "691ee15e1459e4420d207cfbc4a79b383f32b411"
