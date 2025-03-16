@@ -22,6 +22,13 @@ return require("lazy").setup({
 	},
 
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons", opt = true } },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+	},
 
 	"theprimeagen/harpoon",
 	{
@@ -60,7 +67,7 @@ return require("lazy").setup({
 			{ "williamboman/mason-lspconfig.nvim" },
 
 			-- LSP Support
-			{ "neovim/nvim-lspconfig", opts = { autoformat = true } },
+			{ "neovim/nvim-lspconfig"},
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp" },
