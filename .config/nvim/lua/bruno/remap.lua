@@ -72,7 +72,7 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 -- QFList
 vim.keymap.set("n", "<leader>co", ":copen<cr>zz")
 vim.keymap.set("n", "<leader>cc", ":cclose<cr>zz")
-vim.keymap.set("n", "<leader>fr", [[:cdo %s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>cfr", [[:cdo %s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Telescope
 local builtin = require("telescope.builtin")
@@ -85,6 +85,7 @@ vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 vim.keymap.set("n", "<leader>fg", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
+vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { noremap = true, silent = true })
 
 -- Harpoon
 vim.keymap.set("n", "<leader>a", require("harpoon.mark").add_file)
