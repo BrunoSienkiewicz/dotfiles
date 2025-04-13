@@ -120,6 +120,8 @@ end
 local config = {
 	evaluate_single = true,
 	items = {
+		new_section("Open Session", "lua require('persistence').load()", "Session"),
+		new_section("Select Session", "lua require('persistence').select()", "Session"),
 		new_section("Find file", "Telescope find_files", "Telescope"),
 		new_section("Recent files", "Telescope oldfiles", "Telescope"),
 		new_section("Grep text", "Telescope live_grep", "Telescope"),

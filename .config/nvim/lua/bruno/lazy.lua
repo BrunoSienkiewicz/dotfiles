@@ -38,6 +38,13 @@ return require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
+	{
+		"folke/persistence.nvim",
+		event = "BufReadPre",
+		opts = {
+			dir = vim.fn.stdpath("state") .. "/sessions/",
+		},
+	},
 
 	-- mini
 	{
@@ -67,7 +74,7 @@ return require("lazy").setup({
 			{ "williamboman/mason-lspconfig.nvim" },
 
 			-- LSP Support
-			{ "neovim/nvim-lspconfig"},
+			{ "neovim/nvim-lspconfig" },
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp" },
