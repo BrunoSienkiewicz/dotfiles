@@ -61,7 +61,8 @@ end)
 vim.keymap.set("n", ",C-j>", function()
 	vim.diagnostic.goto_next()
 end)
-vim.keymap.set("n", "<leader>lca", function()
+vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<CR>")
+vim.keymap.set("n", "<leader>ca", function()
 	vim.lsp.buf.code_action()
 end)
 vim.keymap.set("n", "<leader>lr", function()
@@ -72,7 +73,7 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 -- QFList
 vim.keymap.set("n", "<leader>co", ":copen<cr>zz")
 vim.keymap.set("n", "<leader>cc", ":cclose<cr>zz")
-vim.keymap.set("n", "<leader>cs", [[:cdo %s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>cs", [[:cdo %s/\<<C-r><C-w>\>/<C-r><C-w>/gI | update]])
 
 -- Telescope
 local builtin = require("telescope.builtin")
