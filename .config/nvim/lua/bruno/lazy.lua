@@ -30,14 +30,6 @@ return require("lazy").setup({
 		opts = {},
 	},
 
-	"theprimeagen/harpoon",
-	{
-		"ThePrimeagen/refactoring.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre",
