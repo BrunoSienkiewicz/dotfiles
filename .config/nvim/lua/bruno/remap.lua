@@ -79,6 +79,7 @@ vim.keymap.set("n", "<leader>cs", [[:cdo %s/\<<C-r><C-w>\>/<C-r><C-w>/gI | updat
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fd", builtin.lsp_document_symbols, {})
 vim.keymap.set("n", "<leader>fb", function()
 	builtin.buffers({ sort_mru = true, ignore_current_buffer = true })
 end)
