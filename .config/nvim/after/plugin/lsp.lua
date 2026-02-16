@@ -1,68 +1,105 @@
 local lsp_zero = require("lsp-zero")
 
 lsp_zero.on_attach(function(client, bufnr)
-	-- see :help lsp-zero-keybindings
-	-- to learn the available actions
+	-- LSP Zero provides default keymaps
 	lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
-require("mason").setup({})
+-- Mason Setup
+require("mason").setup({
+	ui = {
+		border = "rounded",
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
+
+-- Auto-install LSP servers
 require("mason-lspconfig").setup({
-	-- Replace the language servers listed here
-	-- with the ones you want to install
 	ensure_installed = {
-		-- lsp
-		"rust_analyzer",
 		"lua_ls",
 		"bashls",
 		"pyright",
-		"clangd",
+		"rust_analyzer",
 		"gopls",
+		"clangd",
+		"ts_ls",
+		"yamlls", -- For K8s manifests (when needed)
+		"jsonls", -- JSON language server
 	},
 	handlers = {
 		lsp_zero.default_setup,
 	},
 })
 
-local lspconfig = require("lspconfig")
-local util = require("lspconfig/util")
-
-lspconfig.pyright.setup({})
-lspconfig.ts_ls.setup({})
-lspconfig.rust_analyzer.setup({
-	-- Server-specific settings. See `:help lspconfig-setup`
-	settings = {
-		["rust-analyzer"] = {},
+-- Mason Tool Installer for formatters and linters
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		-- Formatters
+		"prettier",
+		"black",
+		"isort",
+		"stylua",
+		"shfmt",
+		"gofumpt", -- Stricter Go formatting
+		-- Linters
+		"eslint_d",
+		"ruff", -- Fast Python linter
+		"mypy", -- Python type checker
+		"golangci-lint", -- Go linter
+		-- Debuggers
+		"debugpy", -- Python debugger
+		"delve", -- Go debugger
 	},
+	auto_update = false,
+	run_on_start = true,
 })
-lspconfig.clangd.setup({})
-lspconfig.gopls.setup({
-	cmd = { "gopls" },
-	filetypes = { "go", "gomod", "gowork", "gotimpl" },
-	root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+
+-- Configure Lua LSP for Neovim development
+require("lspconfig").lua_ls.setup({
 	settings = {
-		gopls = {
-			completeUnimported = true,
-			usePlaceholders = true,
-			analyses = {
-				unusedparams = true,
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+			telemetry = {
+				enable = false,
 			},
 		},
 	},
 })
 
-require("mason-tool-installer").setup({
-	ensure_installed = {
-		-- LSP
-		"rust_analyzer",
-		"lua_ls",
-		"bashls",
-		"pyright",
-		"clangd",
-		"gopls",
-		"bash-language-server",
-		"lua-language-server",
-		"vim-language-server",
-		"terraform-ls",
+-- Configure Go LSP
+require("lspconfig").gopls.setup({
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+				shadow = true,
+			},
+			staticcheck = true,
+			gofumpt = true,
+		},
+	},
+})
+
+-- Configure YAML LSP for K8s
+require("lspconfig").yamlls.setup({
+	settings = {
+		yaml = {
+			schemas = {
+				kubernetes = "/*.yaml",
+				["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+				["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+				["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+			},
+		},
 	},
 })

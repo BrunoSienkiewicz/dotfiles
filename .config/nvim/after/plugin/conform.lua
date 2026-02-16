@@ -15,6 +15,8 @@ require("conform").setup({
     graphql = { "prettier" },
     lua = { "stylua" },
     python = { "isort", "black" },
+    go = { "gofumpt" },
+    sh = { "shfmt" },
   },
 
   format_on_save = function(bufnr)
