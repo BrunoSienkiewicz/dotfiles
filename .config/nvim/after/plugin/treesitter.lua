@@ -18,6 +18,10 @@ require("nvim-treesitter.configs").setup({
 		"go",
 		"c",
 		"cpp",
+		"yaml",
+		"toml",
+		"dockerfile",
+		"hcl", -- Terraform
 	},
 	sync_install = false,
 	auto_install = true,

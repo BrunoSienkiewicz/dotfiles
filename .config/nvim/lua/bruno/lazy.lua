@@ -76,6 +76,36 @@ return require("lazy").setup({
 		},
 	},
 
+	-- Development Tools
+	{
+		"mfussenegger/nvim-dap", -- Debug Adapter Protocol
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"mfussenegger/nvim-dap-python",
+			"leoluz/nvim-dap-go",
+		},
+	},
+	{
+		"nvim-neotest/neotest", -- Testing framework
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-neotest/neotest-python",
+			"nvim-neotest/neotest-go",
+		},
+	},
+	{
+		"someone-stole-my-name/yaml-companion.nvim",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"nvim-telescope/telescope.nvim",
+		},
+		ft = { "yaml" },
+		config = function()
+			require("telescope").load_extension("yaml_schema")
+		end,
+	},
+
 	-- Editing
 	"numToStr/Comment.nvim",
 	{

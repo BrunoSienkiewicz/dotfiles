@@ -46,6 +46,26 @@ gp              Git push
 gl              Git pull
 ```
 
+### Testing (t)
+```
+tt              Test: Run nearest
+tf              Test: Run file
+td              Test: Debug nearest
+ts              Test: Toggle summary
+to              Test: Show output
+tl              Test: Run last
+```
+
+### Debugging (d)
+```
+db              Debug: Toggle breakpoint
+dc              Debug: Continue
+dso             Debug: Step over
+dsi             Debug: Step into
+dr              Debug: REPL
+dt              Debug: Toggle UI
+```
+
 ### Splits (s)
 ```
 sv              Split vertical
@@ -64,6 +84,17 @@ U               Redo
 
 ## Shell Aliases
 
+**Development**:
+```
+py              python3
+pytest          Run pytest
+got             go test ./...
+gotv            go test -v ./...
+gotest          go test with coverage
+gobench         go benchmark
+```
+
+**Git**:
 ```
 ll              List detailed (eza)
 lt              Tree view (eza)

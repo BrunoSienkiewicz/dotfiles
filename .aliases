@@ -54,3 +54,44 @@ alias du='du -h'
 if command -v bat &> /dev/null; then
     alias cat='bat --style=plain'
 fi
+
+# ============================================================================
+# Development Aliases
+# ============================================================================
+
+# Python development
+if command -v python3 &> /dev/null; then
+    alias py='python3'
+    alias pip='python3 -m pip'
+    alias venv='python3 -m venv'
+    alias activate='source venv/bin/activate'
+    alias pytest='python3 -m pytest'
+    alias ptw='python3 -m pytest --watch'  # If pytest-watch is installed
+fi
+
+# Go development
+if command -v go &> /dev/null; then
+    alias got='go test ./...'
+    alias gotv='go test -v ./...'
+    alias gob='go build'
+    alias gor='go run'
+    alias gom='go mod tidy'
+    alias gotest='go test -cover ./...'
+    alias gobench='go test -bench=. -benchmem'
+fi
+
+# Kubernetes (minimal - for when you need it)
+if command -v kubectl &> /dev/null; then
+    alias k='kubectl'
+    alias kgp='kubectl get pods'
+    alias kl='kubectl logs'
+    alias klf='kubectl logs -f'
+    alias kctx='kubectl config current-context'
+fi
+
+# Docker (minimal - for local dev)
+if command -v docker &> /dev/null; then
+    alias d='docker'
+    alias dps='docker ps'
+    alias dl='docker logs -f'
+fi

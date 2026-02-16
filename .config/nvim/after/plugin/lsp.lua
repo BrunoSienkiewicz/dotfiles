@@ -27,6 +27,8 @@ require("mason-lspconfig").setup({
 		"gopls",
 		"clangd",
 		"ts_ls",
+		"yamlls", -- For K8s manifests (when needed)
+		"jsonls", -- JSON language server
 	},
 	handlers = {
 		lsp_zero.default_setup,
@@ -39,11 +41,18 @@ require("mason-tool-installer").setup({
 		-- Formatters
 		"prettier",
 		"black",
+		"isort",
 		"stylua",
 		"shfmt",
+		"gofumpt", -- Stricter Go formatting
 		-- Linters
 		"eslint_d",
-		"pylint",
+		"ruff", -- Fast Python linter
+		"mypy", -- Python type checker
+		"golangci-lint", -- Go linter
+		-- Debuggers
+		"debugpy", -- Python debugger
+		"delve", -- Go debugger
 	},
 	auto_update = false,
 	run_on_start = true,
@@ -62,6 +71,34 @@ require("lspconfig").lua_ls.setup({
 			},
 			telemetry = {
 				enable = false,
+			},
+		},
+	},
+})
+
+-- Configure Go LSP
+require("lspconfig").gopls.setup({
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+				shadow = true,
+			},
+			staticcheck = true,
+			gofumpt = true,
+		},
+	},
+})
+
+-- Configure YAML LSP for K8s
+require("lspconfig").yamlls.setup({
+	settings = {
+		yaml = {
+			schemas = {
+				kubernetes = "/*.yaml",
+				["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+				["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+				["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
 			},
 		},
 	},
