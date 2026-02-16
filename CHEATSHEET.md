@@ -107,9 +107,9 @@ Prefix + r          Reload config
 
 ## 🚀 First Time Setup
 
-1. Clone dotfiles:
+1. Clone dotfiles (or your fork):
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+git clone https://github.com/BrunoSienkiewicz/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 

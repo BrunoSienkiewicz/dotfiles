@@ -176,8 +176,8 @@ These tools are automatically installed by the setup script:
 ### Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+# Clone the repository (or your fork if you've customized it)
+git clone https://github.com/BrunoSienkiewicz/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
 # Run the setup script

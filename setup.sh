@@ -92,7 +92,7 @@ install_dependencies() {
             sudo apt-get install -y git curl wget build-essential tmux zsh ripgrep fd-find fzf
             
             # Install Neovim
-            if ! command_exists nvim || [ "$(nvim --version | head -n1 | grep -oP '(?<=v)[0-9]+\.[0-9]+' | cut -d. -f1)" -lt 1 ]; then
+            if ! command_exists nvim; then
                 print_step "Installing Neovim (latest stable)..."
                 wget -O /tmp/nvim.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
                 sudo tar -C /opt -xzf /tmp/nvim.tar.gz
@@ -108,7 +108,9 @@ install_dependencies() {
             
             # Install bat (better cat)
             if ! command_exists bat; then
-                wget -O /tmp/bat.deb https://github.com/sharkdp/bat/releases/latest/download/bat_*_amd64.deb
+                print_step "Installing bat..."
+                BAT_VERSION=$(curl -s https://api.github.com/repos/sharkdp/bat/releases/latest | grep -oP '"tag_name": "v\K[^"]+')
+                wget -O /tmp/bat.deb "https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_amd64.deb"
                 sudo dpkg -i /tmp/bat.deb
                 rm /tmp/bat.deb
             fi
