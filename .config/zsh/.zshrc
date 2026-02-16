@@ -24,9 +24,24 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '*'
+zstyle ':vcs_info:git:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' actionformats '%b|%a'
 zstyle ':vcs_info:*' enable git
+
+# Function to check for git changes
+git_prompt_status() {
+  if [[ -n ${vcs_info_msg_0_} ]]; then
+    # Check if there are any changes (staged, unstaged, or untracked)
+    if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null || [[ -n $(git ls-files --others --exclude-standard 2>/dev/null) ]]; then
+      echo "*"
+    fi
+  fi
+}
+
 # Catppuccin Mocha colors: 117=sky/blue, 152=teal
-PROMPT='%F{117}*%F{152}[%f%F{152}${vcs_info_msg_0_}%f%F{152}]%f%F{117}[%f%F{117}%~%f%F{117}]%f$ '
+PROMPT='%F{117}$(git_prompt_status)%F{152}[%f%F{152}${vcs_info_msg_0_}%f%F{152}]%f%F{117}[%f%F{117}%~%f%F{117}]%f$ '
 
 # Plugins
 if [ -f "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
