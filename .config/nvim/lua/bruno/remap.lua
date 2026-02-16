@@ -30,8 +30,8 @@ vim.keymap.set("n", "<leader>gp", ":Git push<CR>", { desc = "Git Push" })
 vim.keymap.set("n", "<leader>gl", ":Git pull<CR>", { desc = "Git Pull" })
 
 -- Splits (s)
-vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split Vertically" })
-vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split Horizontally" })
+vim.keymap.set("n", "<leader>v", "<cmd>vsplit<CR>", { desc = "Split Vertically" })
+vim.keymap.set("n", "<leader>h", "<cmd>split<CR>", { desc = "Split Horizontally" })
 vim.keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Split Close" })
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Window Left" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window Down" })
@@ -44,14 +44,14 @@ vim.keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Buffer Next" })
 vim.keymap.set("n", "<leader>bp", "<cmd>bp<CR>", { desc = "Buffer Previous" })
 
 -- File Explorer (e)
-vim.keymap.set("n", "<leader>e", function()
+vim.keymap.set("n", "<C-b>", function()
 	if not require("mini.files").close() then
 		require("mini.files").open()
 	end
 end, { desc = "Toggle File Explorer" })
 
 -- Search/Replace (s)
-vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search Replace" })
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search Replace" })
 vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
 
 -- Clipboard
