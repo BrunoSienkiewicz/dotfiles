@@ -312,6 +312,26 @@ chsh -s $(which zsh)
 # Install the required language server
 ```
 
+## 🧪 Testing Before Installation
+
+**Want to try this config without affecting your system?** See [TESTING.md](TESTING.md) for detailed guides on:
+- Docker container testing (recommended)
+- Virtual machine testing
+- Temporary user accounts
+- Component-specific testing
+
+Quick test with Docker:
+```bash
+docker run -it --rm ubuntu:22.04 bash -c "
+    apt-get update && apt-get install -y git sudo && \
+    useradd -m -s /bin/bash test && \
+    sudo -u test git clone https://github.com/BrunoSienkiewicz/dotfiles.git /home/test/.dotfiles && \
+    cd /home/test/.dotfiles && \
+    sudo -u test ./setup.sh && \
+    sudo -u test zsh
+"
+```
+
 ## 💡 Productivity Tips
 
 ### Workflow Optimization
