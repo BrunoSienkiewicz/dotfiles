@@ -1,8 +1,22 @@
-.config/nvim/plugin/packer_compiled.lua
+# Neovim
+.config/nvim/lazy-lock.json
+.config/nvim/.luarc.json
 
-.config/tmux/plugins
+# Tmux
+.config/tmux/plugins/
+.config/tmux/resurrect/
 
-.config/zsh/oh-my-zsh
+# ZSH
+.config/zsh/plugins/
 .config/zsh/.zhistory
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump*
+
+# Backup files
+*.old
+*.bak
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
