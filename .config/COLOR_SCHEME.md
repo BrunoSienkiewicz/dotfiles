@@ -2,9 +2,9 @@
 
 This document summarizes the color scheme configuration across all tools in this dotfiles repository.
 
-## Color Scheme: Catppuccin Mocha with Bright Custom Colors
+## Color Scheme: Catppuccin Mocha
 
-All tools use the **Catppuccin Mocha** theme for consistency, with custom bright color overrides applied in Neovim.
+All tools use the **Catppuccin Mocha** theme for consistency. Neovim uses custom bright color overrides for enhanced visibility, while Tmux and VS Code use the standard Catppuccin Mocha palette.
 
 ### Configuration Details
 
@@ -49,9 +49,11 @@ All tools use the **Catppuccin Mocha** theme for consistency, with custom bright
 All configurations share:
 1. **Same base theme**: Catppuccin Mocha
 2. **Same flavor**: mocha (dark theme)
-3. **Similar visual appearance**: Consistent colors across terminal, editor, and multiplexer
+3. **Similar visual appearance**: Consistent base colors across terminal, editor, and multiplexer
 4. **Same font family**: Nerd Fonts for icon support
 5. **Same development workflow**: LSP, formatting, testing tools
+
+**Note**: Neovim uses custom bright color overrides for enhanced syntax highlighting, while Tmux and VS Code use the standard Catppuccin Mocha palette. All three maintain visual consistency through the same base theme and flavor.
 
 ## Why This Color Scheme?
 

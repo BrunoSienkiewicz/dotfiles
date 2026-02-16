@@ -84,7 +84,7 @@ code --install-extension usernamehw.errorlens
 
 This configuration provides:
 
-- **Catppuccin Mocha theme** with custom bright colors (matching Neovim)
+- **Catppuccin Mocha theme** (standard palette from VS Code extension)
 - **Relative line numbers** (like Neovim with `relativenumber`)
 - **Block cursor** (like Neovim)
 - **Format on save** for Python, Go, JavaScript/TypeScript
@@ -102,4 +102,4 @@ Edit `settings.json` to customize:
 
 ## Color Scheme
 
-The VS Code configuration uses the same Catppuccin Mocha theme as Neovim and tmux, with custom bright color overrides for enhanced visibility.
+The VS Code configuration uses the same Catppuccin Mocha theme as Neovim and Tmux, providing a consistent visual experience. Note that VS Code uses the standard Catppuccin Mocha palette from the extension, while Neovim has custom bright color overrides configured in its Lua files.
