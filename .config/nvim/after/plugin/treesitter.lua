@@ -1,8 +1,4 @@
--- ============================================================================
--- Treesitter - Better syntax highlighting and code understanding
--- ============================================================================
 require("nvim-treesitter.configs").setup({
-	-- Auto-install parsers for these languages
 	ensure_installed = {
 		"lua",
 		"vim",
@@ -23,25 +19,15 @@ require("nvim-treesitter.configs").setup({
 		"c",
 		"cpp",
 	},
-
-	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
-
-	-- Automatically install missing parsers when entering buffer
 	auto_install = true,
-
-	-- Highlighting
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
 	},
-
-	-- Indentation
 	indent = {
 		enable = true,
 	},
-
-	-- Incremental selection
 	incremental_selection = {
 		enable = true,
 		keymaps = {
@@ -51,8 +37,6 @@ require("nvim-treesitter.configs").setup({
 			node_decremental = "<bs>",
 		},
 	},
-
-	-- Text objects
 	textobjects = {
 		select = {
 			enable = true,

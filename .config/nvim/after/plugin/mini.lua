@@ -1,13 +1,7 @@
--- ============================================================================
--- Mini.cursorword - Highlight word under cursor
--- ============================================================================
 require("mini.cursorword").setup({
 	delay = 100,
 })
 
--- ============================================================================
--- Mini.files - File Explorer
--- ============================================================================
 local minifiles = require("mini.files")
 
 minifiles.setup({
@@ -21,7 +15,6 @@ minifiles.setup({
 	},
 })
 
--- Split window mappings for mini.files
 local map_split = function(buf_id, lhs, direction)
 	local rhs = function()
 		local new_target_window
@@ -31,7 +24,6 @@ local map_split = function(buf_id, lhs, direction)
 		end)
 		MiniFiles.set_target_window(new_target_window)
 	end
-
 	vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = "Split " .. direction })
 end
 
@@ -44,7 +36,6 @@ vim.api.nvim_create_autocmd("User", {
 	end,
 })
 
--- Toggle dotfiles visibility
 local show_dotfiles = true
 
 local filter_show = function(fs_entry)

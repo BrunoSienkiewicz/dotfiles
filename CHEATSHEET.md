@@ -1,147 +1,102 @@
-# Quick Reference Cheatsheet
+# Quick Reference
 
-## 🔑 Essential Keybindings
+## Tmux (Prefix: Ctrl+a)
 
-### Tmux (Prefix: Ctrl+a)
 ```
-Prefix + |          Split vertically
-Prefix + -          Split horizontally
-Prefix + c          New window
-Prefix + n/p        Next/Previous window
-Prefix + e          Rename window
-Prefix + E          Rename session
-Prefix + h/j/k/l    Resize pane
-Alt + Arrow         Switch panes (no prefix!)
-Prefix + [          Copy mode (use vi keys)
+|, -            Split vertical/horizontal
+c               New window
+n, p            Next/Previous window
+e, E            Rename window/session
+Alt+Arrow       Switch panes (no prefix)
+h/j/k/l         Resize panes
+I               Install plugins
+r               Reload config
 ```
 
-### Neovim (Leader: Space)
+## Neovim (Leader: Space)
 
-#### Find Everything (f)
+### Find (f)
 ```
-<leader>ff          Find files
-<leader>fg          Find by grep
-<leader>fb          Find buffers
-<leader>fr          Find references
-<leader>fs          Find symbols
-Ctrl+p              Git files
-```
-
-#### LSP (l)
-```
-<leader>ld          Line diagnostics
-<leader>la          LSP actions
-<leader>lr          LSP rename
-<leader>lf          LSP format
-gd                  Go to definition
-K                   Hover docs
-]d / [d             Next/Prev diagnostic
+ff              Find files
+fg              Find by grep
+fb              Find buffers
+fh              Find help
+fr              Find references
+fs              Find symbols
+Ctrl+p          Git files
 ```
 
-#### Git (g)
+### LSP (l)
 ```
-<leader>gs          Git status
-<leader>gc          Git commit
-<leader>gp          Git push
-<leader>gl          Git pull
-```
-
-#### Splits (s)
-```
-<leader>sv          Split vertical
-<leader>sh          Split horizontal
-<leader>sc          Split close
-Ctrl+h/j/k/l        Navigate splits
+ld              Line diagnostics
+la              LSP actions
+lr              LSP rename
+lf              LSP format
+gd              Go to definition
+gi              Go to implementation
+K               Hover docs
+]d, [d          Next/Prev diagnostic
 ```
 
-#### Other
+### Git (g)
 ```
-<leader>e           Toggle file explorer
-<leader>y/p         Yank/Paste to clipboard
-<leader>sr          Search & replace
-U                   Redo
+gs              Git status
+gc              Git commit
+gp              Git push
+gl              Git pull
 ```
 
-## 📂 Useful Commands
+### Splits (s)
+```
+sv              Split vertical
+sh              Split horizontal
+sc              Split close
+Ctrl+h/j/k/l    Navigate splits
+```
 
-### Git
+### Other
+```
+<leader>e       Toggle explorer
+<leader>y/p     Yank/Paste clipboard
+<leader>sr      Search & replace
+U               Redo
+```
+
+## Shell Aliases
+
+```
+ll              List detailed (eza)
+lt              Tree view (eza)
+gs              git status
+gc              git commit
+gp              git push
+glog            git log pretty
+ta              tmux attach
+ts              tmux new session
+vi/vim          nvim
+```
+
+## Useful Commands
+
+**Tmux sessions**:
 ```bash
-gs                  # git status
-gc -m "msg"         # git commit
-gp                  # git push
-gl                  # git pull
-glog                # pretty git log
+tmux            # New session
+ta name         # Attach to session
+ts name         # New named session
+tl              # List sessions
 ```
 
-### Files
-```bash
-ll                  # detailed list (with eza if installed)
-lt                  # tree view (with eza)
-cat file            # view file (with bat if installed)
-```
-
-### Tmux Sessions
-```bash
-tmux                # Start new session
-ta name             # Attach to session
-ts name             # New session with name
-tl                  # List sessions
-tk name             # Kill session
-```
-
-## 🛠️ Maintenance Commands
-
-### Neovim
+**Neovim**:
 ```vim
-:Lazy               " Plugin manager
-:Mason              " LSP/formatter installer
-:checkhealth        " Check setup
+:Lazy           " Plugin manager
+:Mason          " LSP installer
+:checkhealth    " Check setup
 ```
 
-### Tmux
-```
-Prefix + I          Install plugins
-Prefix + U          Update plugins
-Prefix + r          Reload config
-```
+## First-Time Setup
 
-## 🚀 First Time Setup
-
-1. Clone dotfiles (or your fork):
-```bash
-git clone https://github.com/BrunoSienkiewicz/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-```
-
-2. Run setup:
-```bash
-./setup.sh
-```
-
-3. Restart terminal and open tmux:
-```bash
-tmux
-# Press Ctrl+a then I to install plugins
-```
-
-4. Open Neovim:
-```bash
-nvim
-# Wait for plugins to install, then restart
-```
-
-## 💡 Tips
-
-- Use `Ctrl+r` in shell for fuzzy command history
-- Use `Ctrl+p` in nvim for quick file access
-- Create tmux session per project: `ts myproject`
-- Use `<leader>ff` in nvim to find files by name
-- Use `<leader>fg` to search text in files
-- Telescope searches are fuzzy - just type parts of what you want
-
-## 📚 Learn More
-
-- Neovim: `:help` or `:Tutor`
-- Tmux: `man tmux`
-- LSP: `:help lsp`
-- Telescope: `:help telescope`
+1. Clone: `git clone https://github.com/BrunoSienkiewicz/dotfiles.git ~/.dotfiles`
+2. Install: `cd ~/.dotfiles && ./setup.sh`
+3. Restart terminal
+4. Tmux: Press `Ctrl+a` then `I`
+5. Neovim: Open `nvim`, wait for plugins

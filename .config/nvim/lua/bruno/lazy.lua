@@ -12,9 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-	-- ========================================================================
 	-- UI & Theme
-	-- ========================================================================
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -28,9 +26,7 @@ return require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
-	-- ========================================================================
-	-- File Navigation & Search
-	-- ========================================================================
+	-- File Navigation
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
@@ -41,15 +37,11 @@ return require("lazy").setup({
 		version = "*",
 	},
 
-	-- ========================================================================
-	-- Git Integration
-	-- ========================================================================
+	-- Git
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
 
-	-- ========================================================================
 	-- LSP & Completion
-	-- ========================================================================
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
@@ -75,9 +67,7 @@ return require("lazy").setup({
 	},
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 
-	-- ========================================================================
-	-- Syntax & Treesitter
-	-- ========================================================================
+	-- Syntax
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -86,9 +76,7 @@ return require("lazy").setup({
 		},
 	},
 
-	-- ========================================================================
-	-- Editing Enhancements
-	-- ========================================================================
+	-- Editing
 	"numToStr/Comment.nvim",
 	{
 		"windwp/nvim-autopairs",
@@ -101,9 +89,7 @@ return require("lazy").setup({
 		config = true,
 	},
 
-	-- ========================================================================
-	-- Session Management
-	-- ========================================================================
+	-- Sessions
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre",
@@ -114,7 +100,6 @@ return require("lazy").setup({
 		},
 	},
 }, {
-	-- Lazy.nvim configuration
 	ui = {
 		border = "rounded",
 	},
