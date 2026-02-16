@@ -5,7 +5,6 @@ lsp_zero.on_attach(function(client, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
--- Mason Setup
 require("mason").setup({
 	ui = {
 		border = "rounded",
@@ -27,8 +26,8 @@ require("mason-lspconfig").setup({
 		"gopls",
 		"clangd",
 		"ts_ls",
-		"yamlls", -- For K8s manifests (when needed)
-		"jsonls", -- JSON language server
+		"yamlls",
+		"jsonls",
 	},
 	handlers = {
 		lsp_zero.default_setup,
@@ -44,15 +43,11 @@ require("mason-tool-installer").setup({
 		"isort",
 		"stylua",
 		"shfmt",
-		"gofumpt", -- Stricter Go formatting
-		-- Linters
+		"gofumpt",
 		"eslint_d",
-		"ruff", -- Fast Python linter
-		"mypy", -- Python type checker
-		"golangci-lint", -- Go linter
-		-- Debuggers
-		"debugpy", -- Python debugger
-		"delve", -- Go debugger
+		"ruff",
+		"mypy",
+		"golangci-lint",
 	},
 	auto_update = false,
 	run_on_start = true,

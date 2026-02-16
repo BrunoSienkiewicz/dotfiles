@@ -56,22 +56,23 @@ to              Test: Show output
 tl              Test: Run last
 ```
 
-### Debugging (d)
-```
-db              Debug: Toggle breakpoint
-dc              Debug: Continue
-dso             Debug: Step over
-dsi             Debug: Step into
-dr              Debug: REPL
-dt              Debug: Toggle UI
-```
-
 ### Splits (s)
 ```
-sv              Split vertical
-sh              Split horizontal
+v              Split vertical
+h              Split horizontal
 sc              Split close
 Ctrl+h/j/k/l    Navigate splits
+```
+
+### Completion
+```
+Ctrl+Space      Trigger completion
+Ctrl+n          Next completion
+Ctrl+p          Previous completion
+Ctrl+f          Scroll docs forward
+Ctrl+b          Scroll docs backward
+Tab/S-Tab       Navigate snippets
+Enter           Confirm selection
 ```
 
 ### Other

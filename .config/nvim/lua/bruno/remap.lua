@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", { desc = "Git Commit" })
 vim.keymap.set("n", "<leader>gp", ":Git push<CR>", { desc = "Git Push" })
 vim.keymap.set("n", "<leader>gl", ":Git pull<CR>", { desc = "Git Pull" })
 
--- Splits (s)
+-- Splits
 vim.keymap.set("n", "<leader>v", "<cmd>vsplit<CR>", { desc = "Split Vertically" })
 vim.keymap.set("n", "<leader>h", "<cmd>split<CR>", { desc = "Split Horizontally" })
 vim.keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Split Close" })

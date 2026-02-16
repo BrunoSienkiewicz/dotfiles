@@ -18,14 +18,14 @@ bindkey -e
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
-# Minimal Prompt with Git Branch
+# Version Control Information in Prompt
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-zstyle ':vcs_info:git:*' formats ' [%b]'
+zstyle ':vcs_info:git:*' formats '%b'
 zstyle ':vcs_info:*' enable git
-PROMPT='%F{cyan}%1~%f%F{yellow}${vcs_info_msg_0_}%f %# '
+PROMPT='%F{red}*%F{green}[%f%F{green}${vcs_info_msg_0_}%f%F{green}]%f%F{cyan}[%f%F{cyan}%~%f%F{cyan}]%f$ '
 
 # Plugins
 if [ -f "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then

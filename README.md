@@ -12,7 +12,7 @@ Clean, fast dotfiles for developers. Optimized for Python, Go, and modern softwa
 
 ## Components
 
-**ZSH** - Minimal shell with `folder_name [git_branch] $` prompt  
+**ZSH** - Minimal shell with `[git_branch] [folder_name] $` prompt  
 **Tmux** - Session manager (Prefix: `Ctrl+a`)  
 **Neovim** - Fast editor with LSP, debugging, and testing support
 

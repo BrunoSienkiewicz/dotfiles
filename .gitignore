@@ -8,6 +8,7 @@
 
 # ZSH
 .config/zsh/plugins/
+.config/zsh/oh-my-zsh/
 .config/zsh/.zhistory
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump*

@@ -17,9 +17,9 @@ NC='\033[0m' # No Color
 # Detect OS
 OS="$(uname -s)"
 case "${OS}" in
-    Linux*)     MACHINE=Linux;;
-    Darwin*)    MACHINE=Mac;;
-    *)          MACHINE="UNKNOWN:${OS}"
+Linux*) MACHINE=Linux ;;
+Darwin*) MACHINE=Mac ;;
+*) MACHINE="UNKNOWN:${OS}" ;;
 esac
 
 echo -e "${BLUE}╔════════════════════════════════════════╗${NC}"
@@ -32,23 +32,23 @@ echo
 # ============================================================================
 
 print_step() {
-    echo -e "${GREEN}==>${NC} ${BLUE}$1${NC}"
+	echo -e "${GREEN}==>${NC} ${BLUE}$1${NC}"
 }
 
 print_success() {
-    echo -e "${GREEN}✓${NC} $1"
+	echo -e "${GREEN}✓${NC} $1"
 }
 
 print_warning() {
-    echo -e "${YELLOW}⚠${NC} $1"
+	echo -e "${YELLOW}⚠${NC} $1"
 }
 
 print_error() {
-    echo -e "${RED}✗${NC} $1"
+	echo -e "${RED}✗${NC} $1"
 }
 
 command_exists() {
-    command -v "$1" >/dev/null 2>&1
+	command -v "$1" >/dev/null 2>&1
 }
 
 # ============================================================================
@@ -64,17 +64,17 @@ BACKUP_DIR="$HOME/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
 # ============================================================================
 
 install_package_manager() {
-    if [ "$MACHINE" = "Mac" ]; then
-        if ! command_exists brew; then
-            print_step "Installing Homebrew..."
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            print_success "Homebrew installed"
-        else
-            print_success "Homebrew already installed"
-        fi
-    else
-        print_step "Using system package manager (apt/dnf/pacman)"
-    fi
+	if [ "$MACHINE" = "Mac" ]; then
+		if ! command_exists brew; then
+			print_step "Installing Homebrew..."
+			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+			print_success "Homebrew installed"
+		else
+			print_success "Homebrew already installed"
+		fi
+	else
+		print_step "Using system package manager (apt/dnf/pacman)"
+	fi
 }
 
 # ============================================================================
@@ -82,47 +82,47 @@ install_package_manager() {
 # ============================================================================
 
 install_dependencies() {
-    print_step "Installing dependencies..."
+	print_step "Installing dependencies..."
 
-    if [ "$MACHINE" = "Mac" ]; then
-        brew install git curl wget neovim tmux zsh ripgrep fd fzf eza bat
-    elif [ "$MACHINE" = "Linux" ]; then
-        if command_exists apt-get; then
-            sudo apt-get update
-            sudo apt-get install -y git curl wget build-essential tmux zsh ripgrep fd-find fzf
-            
-            # Install Neovim
-            if ! command_exists nvim; then
-                print_step "Installing Neovim (latest stable)..."
-                wget -O /tmp/nvim.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-                sudo tar -C /opt -xzf /tmp/nvim.tar.gz
-                sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
-                rm /tmp/nvim.tar.gz
-            fi
-            
-            # Install eza (modern ls replacement)
-            if ! command_exists eza; then
-                print_step "Installing eza..."
-                wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | sudo tar xz -C /usr/local/bin
-            fi
-            
-            # Install bat (better cat)
-            if ! command_exists bat; then
-                print_step "Installing bat..."
-                BAT_VERSION=$(curl -s https://api.github.com/repos/sharkdp/bat/releases/latest | grep -oP '"tag_name": "v\K[^"]+')
-                wget -O /tmp/bat.deb "https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_amd64.deb"
-                sudo dpkg -i /tmp/bat.deb
-                rm /tmp/bat.deb
-            fi
-            
-        elif command_exists dnf; then
-            sudo dnf install -y git curl wget gcc make tmux zsh ripgrep fd-find fzf neovim bat
-        elif command_exists pacman; then
-            sudo pacman -Sy --noconfirm git curl wget base-devel tmux zsh ripgrep fd fzf neovim eza bat
-        fi
-    fi
-    
-    print_success "Dependencies installed"
+	if [ "$MACHINE" = "Mac" ]; then
+		brew install git curl wget neovim tmux zsh ripgrep fd fzf eza bat
+	elif [ "$MACHINE" = "Linux" ]; then
+		if command_exists apt-get; then
+			sudo apt-get update
+			sudo apt-get install -y git curl wget build-essential tmux zsh ripgrep fd-find fzf
+
+			# Install Neovim
+			if ! command_exists nvim; then
+				print_step "Installing Neovim (latest stable)..."
+				wget -O /tmp/nvim.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+				sudo tar -C /opt -xzf /tmp/nvim.tar.gz
+				sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
+				rm /tmp/nvim.tar.gz
+			fi
+
+			# Install eza (modern ls replacement)
+			if ! command_exists eza; then
+				print_step "Installing eza..."
+				wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | sudo tar xz -C /usr/local/bin
+			fi
+
+			# Install bat (better cat)
+			if ! command_exists bat; then
+				print_step "Installing bat..."
+				BAT_VERSION=$(curl -s https://api.github.com/repos/sharkdp/bat/releases/latest | grep -oP '"tag_name": "v\K[^"]+')
+				wget -O /tmp/bat.deb "https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_amd64.deb"
+				sudo dpkg -i /tmp/bat.deb
+				rm /tmp/bat.deb
+			fi
+
+		elif command_exists dnf; then
+			sudo dnf install -y git curl wget gcc make tmux zsh ripgrep fd-find fzf neovim bat
+		elif command_exists pacman; then
+			sudo pacman -Sy --noconfirm git curl wget base-devel tmux zsh ripgrep fd fzf neovim eza bat
+		fi
+	fi
+
+	print_success "Dependencies installed"
 }
 
 # ============================================================================
@@ -130,24 +130,24 @@ install_dependencies() {
 # ============================================================================
 
 install_fonts() {
-    print_step "Installing Nerd Fonts..."
-    
-    if [ "$MACHINE" = "Mac" ]; then
-        brew tap homebrew/cask-fonts
-        brew install --cask font-jetbrains-mono-nerd-font
-    else
-        FONT_DIR="$HOME/.local/share/fonts"
-        mkdir -p "$FONT_DIR"
-        
-        if [ ! -f "$FONT_DIR/JetBrainsMonoNerdFont-Regular.ttf" ]; then
-            wget -O /tmp/JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
-            unzip -o /tmp/JetBrainsMono.zip -d "$FONT_DIR"
-            rm /tmp/JetBrainsMono.zip
-            fc-cache -fv
-        fi
-    fi
-    
-    print_success "Nerd Fonts installed"
+	print_step "Installing Nerd Fonts..."
+
+	if [ "$MACHINE" = "Mac" ]; then
+		brew tap homebrew/cask-fonts
+		brew install --cask font-jetbrains-mono-nerd-font
+	else
+		FONT_DIR="$HOME/.local/share/fonts"
+		mkdir -p "$FONT_DIR"
+
+		if [ ! -f "$FONT_DIR/JetBrainsMonoNerdFont-Regular.ttf" ]; then
+			wget -O /tmp/JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+			sudo unzip -o /tmp/JetBrainsMono.zip -d "$FONT_DIR"
+			rm /tmp/JetBrainsMono.zip
+			fc-cache -fv
+		fi
+	fi
+
+	print_success "Nerd Fonts installed"
 }
 
 # ============================================================================
@@ -155,37 +155,37 @@ install_fonts() {
 # ============================================================================
 
 create_symlinks() {
-    print_step "Creating symlinks..."
-    
-    # Create config directory if it doesn't exist
-    mkdir -p "$CONFIG_DIR"
-    
-    # Backup existing configs
-    for item in zsh tmux nvim; do
-        if [ -e "$CONFIG_DIR/$item" ] && [ ! -L "$CONFIG_DIR/$item" ]; then
-            mkdir -p "$BACKUP_DIR"
-            print_warning "Backing up existing $item config to $BACKUP_DIR"
-            mv "$CONFIG_DIR/$item" "$BACKUP_DIR/"
-        fi
-    done
-    
-    # Backup root configs
-    for item in .zshenv .aliases; do
-        if [ -e "$HOME/$item" ] && [ ! -L "$HOME/$item" ]; then
-            mkdir -p "$BACKUP_DIR"
-            print_warning "Backing up existing $item to $BACKUP_DIR"
-            mv "$HOME/$item" "$BACKUP_DIR/"
-        fi
-    done
-    
-    # Create symlinks
-    ln -sf "$DOTFILES_DIR/.config/zsh" "$CONFIG_DIR/zsh"
-    ln -sf "$DOTFILES_DIR/.config/tmux" "$CONFIG_DIR/tmux"
-    ln -sf "$DOTFILES_DIR/.config/nvim" "$CONFIG_DIR/nvim"
-    ln -sf "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
-    ln -sf "$DOTFILES_DIR/.aliases" "$HOME/.aliases"
-    
-    print_success "Symlinks created"
+	print_step "Creating symlinks..."
+
+	# Create config directory if it doesn't exist
+	mkdir -p "$CONFIG_DIR"
+
+	# Backup existing configs
+	for item in zsh tmux nvim; do
+		if [ -e "$CONFIG_DIR/$item" ] && [ ! -L "$CONFIG_DIR/$item" ]; then
+			mkdir -p "$BACKUP_DIR"
+			print_warning "Backing up existing $item config to $BACKUP_DIR"
+			mv "$CONFIG_DIR/$item" "$BACKUP_DIR/"
+		fi
+	done
+
+	# Backup root configs
+	for item in .zshenv .aliases; do
+		if [ -e "$HOME/$item" ] && [ ! -L "$HOME/$item" ]; then
+			mkdir -p "$BACKUP_DIR"
+			print_warning "Backing up existing $item to $BACKUP_DIR"
+			mv "$HOME/$item" "$BACKUP_DIR/"
+		fi
+	done
+
+	# Create symlinks
+	ln -sf "$DOTFILES_DIR/.config/zsh" "$CONFIG_DIR/zsh"
+	ln -sf "$DOTFILES_DIR/.config/tmux" "$CONFIG_DIR/tmux"
+	ln -sf "$DOTFILES_DIR/.config/nvim" "$CONFIG_DIR/nvim"
+	ln -sf "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
+	ln -sf "$DOTFILES_DIR/.aliases" "$HOME/.aliases"
+
+	print_success "Symlinks created"
 }
 
 # ============================================================================
@@ -193,30 +193,30 @@ create_symlinks() {
 # ============================================================================
 
 setup_zsh() {
-    print_step "Setting up ZSH..."
-    
-    # Create plugin directory
-    mkdir -p "$CONFIG_DIR/zsh/plugins"
-    
-    # Install zsh-syntax-highlighting
-    if [ ! -d "$CONFIG_DIR/zsh/plugins/zsh-syntax-highlighting" ]; then
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-            "$CONFIG_DIR/zsh/plugins/zsh-syntax-highlighting"
-    fi
-    
-    # Install zsh-autosuggestions
-    if [ ! -d "$CONFIG_DIR/zsh/plugins/zsh-autosuggestions" ]; then
-        git clone https://github.com/zsh-users/zsh-autosuggestions.git \
-            "$CONFIG_DIR/zsh/plugins/zsh-autosuggestions"
-    fi
-    
-    # Change default shell to zsh
-    if [ "$SHELL" != "$(which zsh)" ]; then
-        print_warning "Changing default shell to zsh (requires password)"
-        chsh -s "$(which zsh)"
-    fi
-    
-    print_success "ZSH setup complete"
+	print_step "Setting up ZSH..."
+
+	# Create plugin directory
+	mkdir -p "$CONFIG_DIR/zsh/plugins"
+
+	# Install zsh-syntax-highlighting
+	if [ ! -d "$CONFIG_DIR/zsh/plugins/zsh-syntax-highlighting" ]; then
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+			"$CONFIG_DIR/zsh/plugins/zsh-syntax-highlighting"
+	fi
+
+	# Install zsh-autosuggestions
+	if [ ! -d "$CONFIG_DIR/zsh/plugins/zsh-autosuggestions" ]; then
+		git clone https://github.com/zsh-users/zsh-autosuggestions.git \
+			"$CONFIG_DIR/zsh/plugins/zsh-autosuggestions"
+	fi
+
+	# Change default shell to zsh
+	if [ "$SHELL" != "$(which zsh)" ]; then
+		print_warning "Changing default shell to zsh (requires password)"
+		chsh -s "$(which zsh)"
+	fi
+
+	print_success "ZSH setup complete"
 }
 
 # ============================================================================
@@ -224,15 +224,15 @@ setup_zsh() {
 # ============================================================================
 
 setup_tmux() {
-    print_step "Setting up Tmux..."
-    
-    # Install TPM (Tmux Plugin Manager)
-    if [ ! -d "$CONFIG_DIR/tmux/plugins/tpm" ]; then
-        git clone https://github.com/tmux-plugins/tpm "$CONFIG_DIR/tmux/plugins/tpm"
-    fi
-    
-    print_success "Tmux setup complete"
-    print_warning "Run 'tmux' and press 'Ctrl+a' then 'I' to install tmux plugins"
+	print_step "Setting up Tmux..."
+
+	# Install TPM (Tmux Plugin Manager)
+	if [ ! -d "$CONFIG_DIR/tmux/plugins/tpm" ]; then
+		git clone https://github.com/tmux-plugins/tpm "$CONFIG_DIR/tmux/plugins/tpm"
+	fi
+
+	print_success "Tmux setup complete"
+	print_warning "Run 'tmux' and press 'Ctrl+a' then 'I' to install tmux plugins"
 }
 
 # ============================================================================
@@ -240,11 +240,11 @@ setup_tmux() {
 # ============================================================================
 
 setup_neovim() {
-    print_step "Setting up Neovim..."
-    
-    # Lazy.nvim will auto-install on first run
-    print_success "Neovim setup complete"
-    print_warning "Run 'nvim' to install plugins automatically"
+	print_step "Setting up Neovim..."
+
+	# Lazy.nvim will auto-install on first run
+	print_success "Neovim setup complete"
+	print_warning "Run 'nvim' to install plugins automatically"
 }
 
 # ============================================================================
@@ -252,33 +252,33 @@ setup_neovim() {
 # ============================================================================
 
 main() {
-    print_step "Starting installation..."
-    echo
-    
-    install_package_manager
-    install_dependencies
-    install_fonts
-    create_symlinks
-    setup_zsh
-    setup_tmux
-    setup_neovim
-    
-    echo
-    echo -e "${GREEN}╔════════════════════════════════════════╗${NC}"
-    echo -e "${GREEN}║   Installation Complete! 🎉            ${NC}"
-    echo -e "${GREEN}╚════════════════════════════════════════╝${NC}"
-    echo
-    echo -e "${YELLOW}Next steps:${NC}"
-    echo "  1. Restart your terminal or run: source ~/.zshenv"
-    echo "  2. Open tmux and press Ctrl+a then I to install plugins"
-    echo "  3. Open nvim - plugins will install automatically"
-    echo
-    
-    if [ -d "$BACKUP_DIR" ]; then
-        echo -e "${YELLOW}Note:${NC} Your old configs were backed up to:"
-        echo "  $BACKUP_DIR"
-        echo
-    fi
+	print_step "Starting installation..."
+	echo
+
+	install_package_manager
+	install_dependencies
+	install_fonts
+	create_symlinks
+	setup_zsh
+	setup_tmux
+	setup_neovim
+
+	echo
+	echo -e "${GREEN}╔════════════════════════════════════════╗${NC}"
+	echo -e "${GREEN}║   Installation Complete! 🎉            ${NC}"
+	echo -e "${GREEN}╚════════════════════════════════════════╝${NC}"
+	echo
+	echo -e "${YELLOW}Next steps:${NC}"
+	echo "  1. Restart your terminal or run: source ~/.zshenv"
+	echo "  2. Open tmux and press Ctrl+a then I to install plugins"
+	echo "  3. Open nvim - plugins will install automatically"
+	echo
+
+	if [ -d "$BACKUP_DIR" ]; then
+		echo -e "${YELLOW}Note:${NC} Your old configs were backed up to:"
+		echo "  $BACKUP_DIR"
+		echo
+	fi
 }
 
 # Run main function
