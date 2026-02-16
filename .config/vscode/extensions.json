@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "catppuccin.catppuccin-vsc",
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "golang.go",
+    "esbenp.prettier-vscode",
+    "redhat.vscode-yaml",
+    "eamodio.gitlens",
+    "aaron-bond.better-comments",
+    "usernamehw.errorlens"
+  ]
+}

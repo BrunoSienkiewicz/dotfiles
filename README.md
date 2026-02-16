@@ -14,7 +14,8 @@ Clean, fast dotfiles for developers. Optimized for Python, Go, and modern softwa
 
 **ZSH** - Minimal shell with `[git_branch] [folder_name] $` prompt  
 **Tmux** - Session manager (Prefix: `Ctrl+a`)  
-**Neovim** - Fast editor with LSP, debugging, and testing support
+**Neovim** - Fast editor with LSP, debugging, and testing support  
+**VS Code** - Optional configuration matching Neovim setup (see `.config/vscode/`)
 
 ## Features
 
@@ -100,7 +101,8 @@ Prefix: `Ctrl+a`
 **Add LSP servers**: Edit `.config/nvim/after/plugin/lsp.lua`  
 **Change theme**: Edit `.config/nvim/after/plugin/catppuccin.lua`  
 **Add aliases**: Edit `.aliases`  
-**Modify prompt**: Edit `.config/zsh/.zshrc`
+**Modify prompt**: Edit `.config/zsh/.zshrc`  
+**VS Code setup**: See `.config/vscode/README.md` for VS Code configuration matching Neovim
 
 ## Troubleshooting
 
@@ -116,6 +118,7 @@ Prefix: `Ctrl+a`
 .config/
   ├── nvim/      # Neovim config
   ├── tmux/      # Tmux config
+  ├── vscode/    # VS Code config (optional)
   └── zsh/       # ZSH config
 .aliases         # Shell aliases
 .zshenv          # Environment vars

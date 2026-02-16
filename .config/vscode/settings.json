@@ -1,0 +1,90 @@
+{
+  // Theme Configuration - Matches Neovim Catppuccin Mocha setup
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "catppuccin.accentColor": "mauve",
+  
+  // Editor Settings - Match Neovim configuration
+  "editor.fontFamily": "'FiraCode Nerd Font', 'JetBrainsMono Nerd Font', 'Hack Nerd Font', Consolas, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.lineNumbers": "relative",
+  "editor.cursorStyle": "block",
+  "editor.cursorBlinking": "solid",
+  "editor.scrollBeyondLastLine": false,
+  "editor.minimap.enabled": true,
+  "editor.rulers": [80, 120],
+  "editor.renderWhitespace": "boundary",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  
+  // Tab and Indentation - Match Neovim settings
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+  
+  // Files
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  
+  // Terminal - Use system shell (zsh)
+  "terminal.integrated.fontFamily": "'FiraCode Nerd Font', 'JetBrainsMono Nerd Font', 'Hack Nerd Font'",
+  "terminal.integrated.fontSize": 14,
+  
+  // Workbench
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
+  
+  // Language-specific settings to match Neovim LSP config
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  
+  // Git
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  
+  // Breadcrumbs
+  "breadcrumbs.enabled": true,
+  
+  // Suggestions
+  "editor.suggestSelection": "first",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  }
+}

@@ -29,7 +29,25 @@ require("catppuccin").setup({
         types = {},
         operators = {},
     },
-    color_overrides = {}, -- Use standard Catppuccin Mocha palette instead of custom bright colors
+    color_overrides = {
+        mocha = {
+            -- Bright, vibrant color palette
+            rosewater = "#ffc9e0",
+            flamingo = "#ffb3d9",
+            pink = "#ff9ddb",
+            mauve = "#d0a9ff",
+            red = "#ff6b8a",
+            maroon = "#ff8fab",
+            peach = "#ffb380",
+            yellow = "#ffe680",
+            green = "#a6e3a1",
+            teal = "#8ff0e0",
+            sky = "#91d7ff",
+            sapphire = "#82cfff",
+            blue = "#96c9ff",
+            lavender = "#c9beff",
+        },
+    }, -- Custom bright colors for enhanced visibility
     custom_highlights = {},
     integrations = {
         cmp = true,
