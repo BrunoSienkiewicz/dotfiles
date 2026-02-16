@@ -20,16 +20,20 @@ Clean, fast dotfiles for developers. Optimized for Python, Go, and modern softwa
 ## Features
 
 ### Language Support
-- **Python**: pyright LSP, black/isort formatting, ruff linting, pytest integration
+- **Python**: pyright LSP, black/isort formatting, ruff linting, pytest integration, Jupyter notebooks
 - **Go**: gopls LSP, gofumpt formatting, golangci-lint, test integration  
-- **JavaScript/TypeScript**: ts_ls LSP, prettier formatting
-- **Rust, C/C++, Lua, Bash**: Full LSP support
+- **JavaScript/TypeScript**: ts_ls LSP, prettier formatting, ESLint support
+- **Java**: jdtls LSP, Maven/Gradle support, JUnit/TestNG integration
+- **C/C++**: clangd LSP, CMake support, clang-format formatting
+- **Markdown**: marksman LSP, live preview, Mermaid diagrams, math support
+- **Rust, Lua, Bash, YAML, JSON**: Full LSP support
 
 ### Development Tools
 - **Debugging**: DAP support for Python and Go with UI
 - **Testing**: Integrated test runner with neotest (pytest, go test)
 - **Code Quality**: Linters, formatters, type checkers
 - **YAML/K8s**: Basic support for manifests when needed
+- **Notebooks**: Jupyter support for interactive Python development
 
 ## Quick Start
 
