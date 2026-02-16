@@ -5,126 +5,131 @@ if not vim.loop.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 return require("lazy").setup({
-	-- UI
+	-- ========================================================================
+	-- UI & Theme
+	-- ========================================================================
 	{
 		"catppuccin/nvim",
-		as = "catppuccin",
+		name = "catppuccin",
+		priority = 1000,
 		config = function()
 			vim.cmd("colorscheme catppuccin")
 		end,
 	},
-
-	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons", opt = true } },
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		---@module "ibl"
-		---@type ibl.config
-		opts = {},
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
+	-- ========================================================================
+	-- File Navigation & Search
+	-- ========================================================================
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.5",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
+		"echasnovski/mini.files",
+		version = "*",
+	},
+
+	-- ========================================================================
+	-- Git Integration
+	-- ========================================================================
+	"lewis6991/gitsigns.nvim",
+	"tpope/vim-fugitive",
+
+	-- ========================================================================
+	-- LSP & Completion
+	-- ========================================================================
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v3.x",
+		dependencies = {
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "neovim/nvim-lspconfig" },
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "L3MON4D3/LuaSnip" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "rafamadriz/friendly-snippets" },
+		},
+	},
+	{
+		"stevearc/conform.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("conform").setup()
+		end,
+	},
+	"WhoIsSethDaniel/mason-tool-installer.nvim",
+
+	-- ========================================================================
+	-- Syntax & Treesitter
+	-- ========================================================================
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
+	},
+
+	-- ========================================================================
+	-- Editing Enhancements
+	-- ========================================================================
+	"numToStr/Comment.nvim",
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
+	{
+		"echasnovski/mini.cursorword",
+		version = "*",
+		config = true,
+	},
+
+	-- ========================================================================
+	-- Session Management
+	-- ========================================================================
 	{
 		"folke/persistence.nvim",
 		event = "BufReadPre",
 		opts = {
 			dir = vim.fn.stdpath("state") .. "/sessions/",
 			need = 1,
-			branch = true, -- use git branch to save session
+			branch = true,
 		},
 	},
-
-	-- mini
-	{
-		"echasnovski/mini.cursorword",
-		version = "*",
+}, {
+	-- Lazy.nvim configuration
+	ui = {
+		border = "rounded",
 	},
-	{
-		"echasnovski/mini.files",
-		version = "*",
-	},
-	{
-		"echasnovski/mini.starter",
-		version = "*",
-	},
-
-	-- Git
-	"lewis6991/gitsigns.nvim",
-	"tpope/vim-fugitive",
-
-	-- LSP
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		dependencies = {
-			--- Uncomment the two plugins below if you want to manage the language servers from neovim
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "L3MON4D3/LuaSnip" },
+	performance = {
+		cache = {
+			enabled = true,
+		},
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
 		},
 	},
-	{
-		"stevearc/conform.nvim", -- code formatter
-		branch = "nvim-0.9",
-	},
-
-	-- Tools
-	{ "wakatime/vim-wakatime", lazy = false },
-	"github/copilot.vim",
-	"numToStr/Comment.nvim",
-	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	"theprimeagen/harpoon",
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
-		-- or                            , branch = '0.1.x',
-		dependencies = { { "nvim-lua/plenary.nvim" } },
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-	},
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	},
-	{
-		"lervag/vimtex",
-		lazy = false, -- we don't want to lazy load VimTeX
-		-- tag = "v2.15", -- uncomment to pin to a specific release
-		init = function()
-			-- VimTeX configuration goes here, e.g.
-			vim.g.vimtex_view_method = "zathura"
-		end,
-	},
-
-	-- autocompletion
-	"hrsh7th/nvim-cmp", -- completion plugin
-	"hrsh7th/cmp-buffer", -- source for text in buffer
-	"hrsh7th/cmp-path", -- source for file system paths
-
-	-- snippets
-	"L3MON4D3/LuaSnip", -- snippet engine
-	"saadparwaiz1/cmp_luasnip", -- for autocompletion
-	"rafamadriz/friendly-snippets", -- useful snippets
 })

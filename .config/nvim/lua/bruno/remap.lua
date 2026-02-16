@@ -1,105 +1,105 @@
+-- ============================================================================
+-- Leader Key
+-- ============================================================================
 vim.g.mapleader = " "
 
--- greatest remap ever
-vim.keymap.set("x", "<leader>dp", [["_dP]])
-
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set({ "n", "v" }, "<leader>yy", "<nop>")
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set("n", "<leader>YY", "<nop>")
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
-vim.keymap.set({ "n", "v" }, "<leader>pp", "<nop>")
-vim.keymap.set("n", "<leader>P", [["+P]])
-vim.keymap.set("n", "<leader>PP", "<nop>")
-
-vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]])
-
-vim.keymap.set("n", "Q", "<nop>")
-
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
-vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
-
--- Navigating
-vim.keymap.set("n", "L", "$")
-vim.keymap.set("n", "H", "^")
-vim.keymap.set("n", "sh", "<C-w>h")
-vim.keymap.set("n", "sj", "<C-w>j")
-vim.keymap.set("n", "sk", "<C-w>k")
-vim.keymap.set("n", "sl", "<C-w>l")
-
--- Splitting
-vim.keymap.set("n", "<leader>v", "<cmd>vsplit<CR>")
-vim.keymap.set("n", "<leader>h", "<cmd>split<CR>")
-
--- Increment and decrement numbers
-vim.keymap.set("n", "+", "<C-a>")
-vim.keymap.set("n", "-", "<C-x>")
-
--- -- Press 'U' for redo
-vim.keymap.set("n", "U", "<C-r>")
-
--- LSP
-vim.keymap.set("n", "K", vim.lsp.buf.hover)
-vim.keymap.set("n", "<leader>dg", function()
-	vim.diagnostic.open_float({
-		border = "rounded",
-	})
-end)
-vim.keymap.set("n", ",C-k>", function()
-	vim.diagnostic.goto_prev()
-end)
-vim.keymap.set("n", ",C-j>", function()
-	vim.diagnostic.goto_next()
-end)
-vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<CR>")
-vim.keymap.set("n", "<leader>ca", function()
-	vim.lsp.buf.code_action()
-end)
-vim.keymap.set("n", "<leader>lr", function()
-	vim.lsp.buf.references()
-end)
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-
--- QFList
-vim.keymap.set("n", "<leader>co", ":copen<cr>zz")
-vim.keymap.set("n", "<leader>cc", ":cclose<cr>zz")
-vim.keymap.set("n", "<leader>cs", [[:cdo %s/\<<C-r><C-w>\>/<C-r><C-w>/gI | update]])
-
--- Telescope
+-- ============================================================================
+-- Telescope - File Navigation (f = find)
+-- ============================================================================
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fd", builtin.lsp_document_symbols, {})
-vim.keymap.set("n", "<leader>fb", function()
-	builtin.buffers({ sort_mru = true, ignore_current_buffer = true })
-end)
-vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-vim.keymap.set("n", "<leader>fg", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
-vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find by Grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help" })
+vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Find References" })
+vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Find Symbols" })
+vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Git Files" })
 
--- MiniFiles
-vim.keymap.set("n", "<C-b>", function()
+-- ============================================================================
+-- LSP Actions (l = lsp)
+-- ============================================================================
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "LSP Actions" })
+vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP Rename" })
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "LSP Format" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+
+-- ============================================================================
+-- Git Actions (g = git)
+-- ============================================================================
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git Status" })
+vim.keymap.set("n", "<leader>gc", ":Git commit<CR>", { desc = "Git Commit" })
+vim.keymap.set("n", "<leader>gp", ":Git push<CR>", { desc = "Git Push" })
+vim.keymap.set("n", "<leader>gl", ":Git pull<CR>", { desc = "Git Pull" })
+
+-- ============================================================================
+-- Window Management (w = window, s = split)
+-- ============================================================================
+vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split Vertically" })
+vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split Horizontally" })
+vim.keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Split Close" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Window Left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window Down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Window Up" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Window Right" })
+
+-- ============================================================================
+-- Buffer Management (b = buffer)
+-- ============================================================================
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Buffer Delete" })
+vim.keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Buffer Next" })
+vim.keymap.set("n", "<leader>bp", "<cmd>bp<CR>", { desc = "Buffer Previous" })
+
+-- ============================================================================
+-- File Explorer (e = explorer)
+-- ============================================================================
+vim.keymap.set("n", "<leader>e", function()
 	if not require("mini.files").close() then
 		require("mini.files").open()
 	end
-end)
-vim.keymap.set("n", "<ESC>", function()
-	require("mini.files").close()
-end)
+end, { desc = "Toggle File Explorer" })
 
--- Git
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>") -- Get changes from the left side of the diff
-vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>") -- Get changes from the right side of the diff
+-- ============================================================================
+-- Search and Replace (s = search/substitute)
+-- ============================================================================
+vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search Replace" })
+vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<CR>", { desc = "No Highlight" })
+
+-- ============================================================================
+-- Clipboard Operations
+-- ============================================================================
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to Clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank Line to Clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from Clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to Void" })
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without Yank" })
+
+-- ============================================================================
+-- Quality of Life
+-- ============================================================================
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join Lines" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll Down" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll Up" })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next Search" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous Search" })
+vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex Mode" })
+vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+
+-- ============================================================================
+-- Quickfix List (q = quickfix)
+-- ============================================================================
+vim.keymap.set("n", "<leader>qo", "<cmd>copen<CR>", { desc = "Quickfix Open" })
+vim.keymap.set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "Quickfix Close" })
+vim.keymap.set("n", "<leader>qn", "<cmd>cnext<CR>zz", { desc = "Quickfix Next" })
+vim.keymap.set("n", "<leader>qp", "<cmd>cprev<CR>zz", { desc = "Quickfix Previous" })
+
+-- ============================================================================
+-- Useful Toggles
+-- ============================================================================
+vim.keymap.set("n", "<leader>tw", "<cmd>set wrap!<CR>", { desc = "Toggle Wrap" })
+vim.keymap.set("n", "<leader>tr", "<cmd>set relativenumber!<CR>", { desc = "Toggle Relative Numbers" })
