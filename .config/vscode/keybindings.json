@@ -197,7 +197,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "space n h",
+    "key": "space s n",
     "command": "editor.action.nextMatchFindAction",
     "when": "editorTextFocus && findInputFocussed"
   },
@@ -270,17 +270,39 @@
   },
 
   // ============================================================================
-  // TOGGLES (t)
+  // TOGGLES (T - uppercase to avoid conflict with testing)
   // ============================================================================
   {
-    "key": "space t w",
+    "key": "space shift+t w",
     "command": "editor.action.toggleWordWrap",
     "when": "editorTextFocus"
   },
   {
-    "key": "space t r",
+    "key": "space shift+t r",
     "command": "editor.action.toggleRenderWhitespace",
     "when": "editorTextFocus"
+  },
+
+  // ============================================================================
+  // TESTING (t)
+  // ============================================================================
+  {
+    "key": "space t t",
+    "command": "testing.runAtCursor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space t f",
+    "command": "testing.runCurrentFile",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space t a",
+    "command": "testing.runAll"
+  },
+  {
+    "key": "space t l",
+    "command": "testing.reRunLastRun"
   },
 
   // ============================================================================
@@ -344,28 +366,6 @@
     "key": "space m c",
     "command": "markdown.extension.editing.toggleCodeBlock",
     "when": "editorTextFocus && editorLangId == 'markdown'"
-  },
-
-  // ============================================================================
-  // TESTING (for Java, TypeScript, etc.)
-  // ============================================================================
-  {
-    "key": "space t t",
-    "command": "testing.runAtCursor",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "space t f",
-    "command": "testing.runCurrentFile",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "space t a",
-    "command": "testing.runAll"
-  },
-  {
-    "key": "space t l",
-    "command": "testing.reRunLastRun"
   },
 
   // ============================================================================

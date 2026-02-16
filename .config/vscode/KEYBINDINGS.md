@@ -78,7 +78,7 @@ The leader key is **Space**. All keybindings starting with "Space" require you t
 | Keybinding | Action | Description |
 |------------|--------|-------------|
 | `Space s` | Find and Replace | Open find/replace dialog |
-| `Space n h` | Next Match | Jump to next search result |
+| `Space s n` | Next Match | Jump to next search result |
 
 ### Clipboard
 
@@ -106,12 +106,21 @@ The leader key is **Space**. All keybindings starting with "Space" require you t
 | `Space q n` | Next Problem | Jump to next problem |
 | `Space q p` | Previous Problem | Jump to previous problem |
 
-### Toggles (t)
+### Toggles (T - uppercase)
 
 | Keybinding | Action | Description |
 |------------|--------|-------------|
-| `Space t w` | Toggle Word Wrap | Enable/disable word wrapping |
-| `Space t r` | Toggle Whitespace | Show/hide whitespace characters |
+| `Space T w` | Toggle Word Wrap | Enable/disable word wrapping |
+| `Space T r` | Toggle Whitespace | Show/hide whitespace characters |
+
+### Testing (t)
+
+| Keybinding | Action | Description |
+|------------|--------|-------------|
+| `Space t t` | Run Test at Cursor | Execute test under cursor |
+| `Space t f` | Run Tests in File | Run all tests in current file |
+| `Space t a` | Run All Tests | Execute entire test suite |
+| `Space t l` | Re-run Last Test | Repeat previous test run |
 
 ### Testing (t)
 

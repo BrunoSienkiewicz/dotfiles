@@ -201,7 +201,7 @@ This configuration includes comprehensive keybindings that match Neovim's workfl
 
 ### Search/Replace
 - `Space s` - Find and replace
-- `Space n h` - Next match (when find is focused)
+- `Space s n` - Next match (when find is focused)
 
 ### Clipboard
 - `Space y` - Copy to clipboard
@@ -220,9 +220,11 @@ This configuration includes comprehensive keybindings that match Neovim's workfl
 - `Space q n` - Next problem
 - `Space q p` - Previous problem
 
-### Toggles (t)
-- `Space t w` - Toggle word wrap
-- `Space t r` - Toggle render whitespace
+### Toggles (T - uppercase)
+- `Space T w` - Toggle word wrap
+- `Space T r` - Toggle render whitespace
+
+### Testing (t)
 - `Space t t` - Run test at cursor
 - `Space t f` - Run tests in current file
 - `Space t a` - Run all tests
