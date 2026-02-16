@@ -1,15 +1,121 @@
+# Basic kubectl aliases
 alias k='kubectl'
-alias ks= 'kubectl -n kube-system'
-alias kdesc='kubectl describe'
-alias kcf='kubectl create -f'
-alias kaf='kubectl apply -f'
-alias kgn='kubectl get nodes'
+alias kgx='kubectl config get-contexts'
+alias kx='kubectl config use-context'
+alias kn='kubectl config set-context --current --namespace'
+
+# Get commands
+alias kg='kubectl get'
 alias kgp='kubectl get pods'
-alias kgpa='kubectl get pods -- all-namespaces'
-alias kgs='kubectl get services'
+alias kgpa='kubectl get pods --all-namespaces'
+alias kgpw='kubectl get pods --watch'
+alias kgpwide='kubectl get pods -o wide'
 alias kgd='kubectl get deployments'
-alias kd= 'kubectl delete'
-alias kdp='kubectl delete pod'
-alias kds='kubectl delete service'
-alias kdd='kubectl delete deployment'
-alias kdn='kubectl delete namespace'
+alias kgs='kubectl get services'
+alias kgn='kubectl get nodes'
+alias kgns='kubectl get namespaces'
+alias kgi='kubectl get ingress'
+alias kgcm='kubectl get configmaps'
+alias kgsec='kubectl get secrets'
+alias kgpv='kubectl get pv'
+alias kgpvc='kubectl get pvc'
+
+# Describe commands
+alias kdesc='kubectl describe'
+alias kdp='kubectl describe pod'
+alias kdd='kubectl describe deployment'
+alias kds='kubectl describe service'
+alias kdn='kubectl describe node'
+
+# Delete commands
+alias kdel='kubectl delete'
+alias kdelp='kubectl delete pod'
+alias kdeld='kubectl delete deployment'
+alias kdels='kubectl delete service'
+alias kdelns='kubectl delete namespace'
+
+# Logs commands
+alias kl='kubectl logs'
+alias klf='kubectl logs -f'
+alias klp='kubectl logs -p'
+
+# Execute commands
+alias kex='kubectl exec -it'
+alias keti='kubectl exec -it'
+
+# Apply/Create commands
+alias ka='kubectl apply -f'
+alias kaf='kubectl apply -f'
+alias kcf='kubectl create -f'
+alias kdf='kubectl delete -f'
+
+# Debugging and troubleshooting
+alias kpf='kubectl port-forward'
+alias keti='kubectl exec -it'
+alias kdebug='kubectl run -it --rm debug --image=busybox --restart=Never -- sh'
+
+# Context switching helpers
+alias ks='kubectl -n kube-system'
+alias kgpoall='kubectl get pods --all-namespaces -o wide'
+alias kgpojson='kubectl get pods -o json'
+alias kgpoyaml='kubectl get pods -o yaml'
+
+# Quick resource inspection
+alias ktree='kubectl get all'
+alias kres='kubectl api-resources'
+alias kapi='kubectl api-versions'
+
+# Top commands
+alias ktop='kubectl top'
+alias ktopp='kubectl top pods'
+alias ktopn='kubectl top nodes'
+
+# Rollout commands  
+alias kroll='kubectl rollout'
+alias krollst='kubectl rollout status'
+alias krollh='kubectl rollout history'
+alias krollr='kubectl rollout restart'
+
+# Quick pod shell access (alpine)
+alias kshell='kubectl run -it --rm shell --image=alpine --restart=Never -- sh'
+
+# Get pod logs for all containers
+function klog() {
+  local pod=$1
+  shift
+  kubectl logs "$pod" --all-containers=true "$@"
+}
+
+# Get logs from previous instance
+function klogp() {
+  kubectl logs "$1" --previous
+}
+
+# Tail logs from all pods matching a label
+function klogs() {
+  local label=$1
+  shift
+  kubectl logs -l "$label" --all-containers=true -f "$@"
+}
+
+# Quick exec into first pod matching a pattern
+function kexec() {
+  local pod=$(kubectl get pods | grep "$1" | head -1 | awk '{print $1}')
+  if [ -z "$pod" ]; then
+    echo "No pod found matching: $1"
+    return 1
+  fi
+  echo "Executing into pod: $pod"
+  kubectl exec -it "$pod" -- ${2:-sh}
+}
+
+# Watch pods in current namespace
+alias kwp='watch kubectl get pods'
+
+# Get events sorted by timestamp
+alias kge='kubectl get events --sort-by=.metadata.creationTimestamp'
+
+# Drain and cordon nodes
+alias kdrain='kubectl drain'
+alias kcordon='kubectl cordon'
+alias kuncordon='kubectl uncordon'

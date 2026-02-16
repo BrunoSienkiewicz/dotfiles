@@ -1,1 +1,168 @@
-alias "gll"="git config --global alias.ll 'log --oneline'"
+# Git aliases
+alias gll="git config --global alias.ll 'log --oneline'"
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gpl='git pull'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gl='git log --oneline --graph --decorate'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gb='git branch'
+alias gbd='git branch -d'
+alias gm='git merge'
+alias gr='git rebase'
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gf='git fetch'
+
+# Docker aliases
+alias d='docker'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias di='docker images'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dex='docker exec -it'
+alias dlog='docker logs'
+alias dlogf='docker logs -f'
+alias dstop='docker stop'
+alias dstart='docker start'
+alias drestart='docker restart'
+alias dinspect='docker inspect'
+alias dnetls='docker network ls'
+alias dvolls='docker volume ls'
+
+# Docker compose aliases
+alias dc='docker-compose'
+alias dcup='docker-compose up -d'
+alias dcdown='docker-compose down'
+alias dcps='docker-compose ps'
+alias dclog='docker-compose logs'
+alias dclogf='docker-compose logs -f'
+alias dcrestart='docker-compose restart'
+alias dcbuild='docker-compose build'
+alias dcpull='docker-compose pull'
+
+# Docker cleanup
+alias dprune='docker system prune -af'
+alias dclean='docker system prune -a --volumes -f'
+alias dstopall='docker stop $(docker ps -aq)'
+alias drmall='docker rm $(docker ps -aq)'
+
+# Python development
+alias py='python3'
+alias ipy='ipython'
+alias pip='pip3'
+alias pir='pip install -r requirements.txt'
+alias venv='python3 -m venv'
+alias activate='source venv/bin/activate'
+
+# Go development
+alias gor='go run'
+alias gob='go build'
+alias got='go test'
+alias goi='go install'
+alias gom='go mod'
+alias gomt='go mod tidy'
+alias gomv='go mod vendor'
+
+# Common utilities
+alias ll='ls -lah'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Use eza if available (better ls)
+if command -v eza &> /dev/null; then
+  alias ls='eza --icons'
+  alias ll='eza -lah --icons --git'
+  alias la='eza -a --icons'
+  alias lt='eza --tree --level=2 --icons'
+  alias l='eza -lh --icons --git'
+fi
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias grep='grep --color=auto'
+alias mkdir='mkdir -pv'
+
+# Use bat if available (better cat)
+if command -v bat &> /dev/null; then
+  alias cat='bat --style=auto'
+  alias catp='bat --style=plain'  # Plain cat when needed
+fi
+
+# System monitoring
+alias ports='netstat -tulanp'
+alias meminfo='free -m -l -t'
+alias psmem='ps auxf | sort -nr -k 4'
+alias pscpu='ps auxf | sort -nr -k 3'
+
+# Quick file finding
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+# JSON/YAML processing
+alias json='python3 -m json.tool'
+alias yaml='python3 -c "import sys, yaml, json; print(yaml.safe_load(sys.stdin))"'
+
+# Quick HTTP server
+alias serve='python3 -m http.server'
+
+# Terraform shortcuts
+alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+alias tfd='terraform destroy'
+alias tfv='terraform validate'
+alias tff='terraform fmt'
+alias tfo='terraform output'
+
+# Helm shortcuts
+alias h='helm'
+alias hi='helm install'
+alias hu='helm upgrade'
+alias hls='helm list'
+alias hs='helm search'
+alias hrm='helm uninstall'
+
+# Quick directory navigation functions
+function mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+# Extract any archive
+function extract() {
+  if [ -f "$1" ]; then
+    case "$1" in
+      *.tar.bz2)   tar xjf "$1"     ;;
+      *.tar.gz)    tar xzf "$1"     ;;
+      *.bz2)       bunzip2 "$1"     ;;
+      *.rar)       unrar x "$1"     ;;
+      *.gz)        gunzip "$1"      ;;
+      *.tar)       tar xf "$1"      ;;
+      *.tbz2)      tar xjf "$1"     ;;
+      *.tgz)       tar xzf "$1"     ;;
+      *.zip)       unzip "$1"       ;;
+      *.Z)         uncompress "$1"  ;;
+      *.7z)        7z x "$1"        ;;
+      *)           echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# Find and kill process by name
+function killp() {
+  ps aux | grep -v grep | grep "$1" | awk '{print $2}' | xargs kill -9
+}
+
+# Create and enter a temporary directory
+function tmpd() {
+  cd "$(mktemp -d)"
+}

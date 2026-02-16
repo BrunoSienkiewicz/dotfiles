@@ -40,6 +40,20 @@ return require("lazy").setup({
 		},
 	},
 
+	-- Keybinding helper
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+
+	-- Better diagnostics list
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
+
 	-- mini
 	{
 		"echasnovski/mini.cursorword",
@@ -78,6 +92,50 @@ return require("lazy").setup({
 	{
 		"stevearc/conform.nvim", -- code formatter
 		branch = "nvim-0.9",
+	},
+
+	-- Debugging
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio",
+			"theHamsta/nvim-dap-virtual-text",
+		},
+	},
+	{
+		"leoluz/nvim-dap-go",
+		ft = "go",
+		dependencies = "mfussenegger/nvim-dap",
+	},
+	{
+		"mfussenegger/nvim-dap-python",
+		ft = "python",
+		dependencies = "mfussenegger/nvim-dap",
+	},
+
+	-- YAML/JSON schema support
+	{
+		"b0o/SchemaStore.nvim",
+		lazy = true,
+		version = false,
+	},
+
+	-- DevOps tools support
+	{
+		"hashivim/vim-terraform",
+		ft = { "terraform", "tf" },
+	},
+	{
+		"towolf/vim-helm",
+		ft = "helm",
+	},
+
+	-- REST client
+	{
+		"rest-nvim/rest.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		ft = "http",
 	},
 
 	-- Tools
