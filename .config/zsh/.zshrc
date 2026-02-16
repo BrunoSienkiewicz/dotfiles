@@ -25,7 +25,8 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '%b'
 zstyle ':vcs_info:*' enable git
-PROMPT='%F{red}*%F{green}[%f%F{green}${vcs_info_msg_0_}%f%F{green}]%f%F{cyan}[%f%F{cyan}%~%f%F{cyan}]%f$ '
+# Catppuccin Mocha colors: 117=sky/blue, 152=teal
+PROMPT='%F{117}*%F{152}[%f%F{152}${vcs_info_msg_0_}%f%F{152}]%f%F{117}[%f%F{117}%~%f%F{117}]%f$ '
 
 # Plugins
 if [ -f "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then

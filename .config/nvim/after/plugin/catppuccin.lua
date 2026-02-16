@@ -16,8 +16,8 @@ require("catppuccin").setup({
     no_bold = false, -- Force no bold
     no_underline = false, -- Force no underline
     styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = { "italic" }, -- Change the style of comments
-        conditionals = { "italic" },
+        comments = {}, -- Remove italic from comments for less distraction
+        conditionals = {},
         loops = {},
         functions = {},
         keywords = {},
@@ -29,36 +29,7 @@ require("catppuccin").setup({
         types = {},
         operators = {},
     },
-    color_overrides = {
-        mocha = {
-			rosewater = "#FFD0DE",
-			flamingo = "#FC8AA1",
-			pink = "#FC93DD",
-			mauve = "#D9AEEF",
-			red = "#ED5470",
-			maroon = "#FF9999",
-			peach = "#F28C60",
-			yellow = "#FEFFB9",
-			green = "#53DB80",
-			teal = "#37D4B7",
-			sky = "#92CCFF",
-			sapphire = "#9AAEFF",
-			blue = "#77C5FD",
-			lavender = "#C99AFF",
-			text = "#F5F1FC",
-			subtext1 = "#a6b0d8",
-			subtext0 = "#959ec2",
-			overlay2 = "#848cad",
-			overlay1 = "#717997",
-			overlay0 = "#63677f",
-			surface2 = "#505469",
-			surface1 = "#3e4255",
-			surface0 = "#2c2f40",
-			base = "#1E1E22",
-			mantle = "#141620",
-			crust = "#0e0f16",
-		},
-    },
+    color_overrides = {}, -- Use standard Catppuccin Mocha palette instead of custom bright colors
     custom_highlights = {},
     integrations = {
         cmp = true,
