@@ -167,8 +167,9 @@ if command -v fzf &> /dev/null; then
     --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 fi
 
-# Tmux sessionizer keybinding
-bindkey -s ^f "tmux-sessionizer\n"
+# Tmux sessionizer keybinding (Ctrl+f)
+# Calls the tmux-sessionizer.sh script for quick project switching with tmux
+bindkey -s ^f "$HOME/.config/tmux/tmux-sessionizer.sh\n"
 
 # Zoxide (better cd) - initialize if installed
 if command -v zoxide &> /dev/null; then
@@ -234,9 +235,10 @@ function pkill-fuzzy() {
   fi
 }
 
-# Quick project directory navigation
+# Quick project directory navigation (without tmux session creation)
+# For tmux session creation, use tmux-sessionizer (Ctrl+f)
 function proj() {
-  local dir=$(find ~/projects ~/work ~/ -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+  local dir=$(find ~/projects ~/work ~/ -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf --prompt="Select directory: ")
   if [ -n "$dir" ]; then
     cd "$dir"
   fi

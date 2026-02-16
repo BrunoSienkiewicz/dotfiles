@@ -101,9 +101,9 @@ alias meminfo='free -m -l -t'
 alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
 
-# Quick file finding
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
+# Quick file finding (use fdir/ffile to avoid conflict with fd-find tool)
+alias fdir='find . -type d -name'
+alias ffile='find . -type f -name'
 
 # JSON/YAML processing
 alias json='python3 -m json.tool'

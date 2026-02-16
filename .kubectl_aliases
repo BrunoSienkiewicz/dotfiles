@@ -41,7 +41,6 @@ alias klp='kubectl logs -p'
 
 # Execute commands
 alias kex='kubectl exec -it'
-alias keti='kubectl exec -it'
 
 # Apply/Create commands
 alias ka='kubectl apply -f'
@@ -51,7 +50,6 @@ alias kdf='kubectl delete -f'
 
 # Debugging and troubleshooting
 alias kpf='kubectl port-forward'
-alias keti='kubectl exec -it'
 alias kdebug='kubectl run -it --rm debug --image=busybox --restart=Never -- sh'
 
 # Context switching helpers
