@@ -158,18 +158,40 @@ Leader key: `Space`
 These tools are automatically installed by the setup script:
 
 ### Essential
-- **ripgrep (rg)**: Fast text search (used by Telescope)
-- **fd**: Fast file finder (alternative to find)
-- **fzf**: Fuzzy finder for command line
-- **eza**: Modern ls replacement with colors and icons
-- **bat**: Cat with syntax highlighting
+- **ripgrep (rg)**: Fast text search (used by Telescope) - Better than grep
+- **fd**: Fast file finder (alternative to find) - Used by telescope
+- **fzf**: Fuzzy finder for command line - Interactive filtering
+- **eza**: Modern ls replacement with colors and icons - Better file listing
+- **bat**: Cat with syntax highlighting - Better file viewing
 - **git**: Version control
 
-### Optional (Manual Install)
-- **lazygit**: Terminal UI for git commands
-- **htop**: Better process viewer
-- **delta**: Better git diff viewer
-- **zoxide**: Smarter cd command
+### Why These Tools?
+- **Speed**: All tools are written in Rust/Go for maximum performance
+- **User-Friendly**: Better defaults and colorful output
+- **Compatible**: Work as drop-in replacements for traditional tools
+- **Cross-Platform**: Work on both Linux and macOS
+
+### Optional Tools (Manual Install)
+
+Install these for an even better experience:
+
+```bash
+# lazygit - Terminal UI for git (easier than fugitive for some)
+brew install lazygit  # macOS
+# or download from https://github.com/jesseduffield/lazygit
+
+# delta - Better git diff viewer
+brew install git-delta  # macOS
+cargo install git-delta  # via Rust
+
+# zoxide - Smarter cd command (learns your patterns)
+brew install zoxide  # macOS
+cargo install zoxide  # via Rust
+
+# htop - Better process viewer
+brew install htop  # macOS
+sudo apt install htop  # Linux
+```
 
 ## 🚀 Installation
 
@@ -289,6 +311,49 @@ chsh -s $(which zsh)
 :Mason
 # Install the required language server
 ```
+
+## 💡 Productivity Tips
+
+### Workflow Optimization
+
+**Project-based tmux sessions:**
+```bash
+# Create a session for each project
+ts myproject
+# Inside tmux, create windows for different tasks
+Prefix + c  # New window for coding
+Prefix + c  # New window for git
+Prefix + c  # New window for terminal/tests
+```
+
+**Telescope workflows:**
+- Use `<leader>ff` when you know the filename
+- Use `<leader>fg` when you know the content
+- Use `<leader>fb` to switch between open files quickly
+- Use `<Ctrl-p>` for git-tracked files only (faster)
+
+**LSP power moves:**
+- `gd` to jump to definition, `Ctrl-o` to jump back
+- Use `<leader>la` for quick fixes and refactoring
+- `<leader>lr` to rename symbols across the project
+- `]d` / `[d` to navigate errors quickly
+
+**Git integration:**
+- Use `:Git` (or `<leader>gs`) for staging files interactively
+- Stage hunks with visual selection in fugitive
+- Use gitsigns for viewing changes without leaving the file
+
+**File explorer tips:**
+- Use `<leader>e` to toggle, `Esc` to close
+- In mini.files: `g.` to toggle dotfiles, `gs`/`gv` to split
+
+### Time Savers
+
+1. **Use fuzzy search everywhere** - Don't type full names
+2. **Learn 5 keybindings per week** - Muscle memory takes time
+3. **Use sessions** - Save your workspace state with `:lua require("persistence").load()`
+4. **Use marks** - `ma` to set mark, `'a` to jump back
+5. **Use registers** - `"ay` to yank to register a, `"ap` to paste
 
 ## 🤝 Contributing
 
