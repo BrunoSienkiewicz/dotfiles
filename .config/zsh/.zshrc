@@ -47,8 +47,11 @@ git_prompt_branch() {
   fi
 }
 
-# Catppuccin Mocha colors: 117=sky/blue, 152=teal
-PROMPT='%F{yellow}%D{%H:%M:%S}%f $(git_prompt_branch)%F{cyan}[%f%F{cyan}%~%f%F{cyan}]%f$ '
+prompt_path() {
+  echo "%f%F{cyan}%~%f "
+}
+
+PROMPT='%F{yellow}%D{%H:%M:%S}%f $(prompt_path)$(git_prompt_branch)$ '
 
 # Plugins
 if [ -f "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
