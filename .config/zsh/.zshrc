@@ -35,19 +35,20 @@ git_prompt_status() {
   if [[ -n ${vcs_info_msg_0_} ]]; then
     # Check if there are any changes (staged, unstaged, or untracked)
     if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null || [[ -n $(git ls-files --others --exclude-standard 2>/dev/null) ]]; then
-      echo "*"
+      echo "%F{red}*%f"
     fi
   fi
 }
 
 git_prompt_branch() {
   if [[ -n ${vcs_info_msg_0_} ]]; then
-    echo "%F{152}[%f%F{152}${vcs_info_msg_0_}%f%F{152}]%f"
+    local star=$(git_prompt_status)
+    echo "${star}%F{green}<%f%F{green}${vcs_info_msg_0_}%f%F{green}>%f"
   fi
 }
 
 # Catppuccin Mocha colors: 117=sky/blue, 152=teal
-PROMPT='%F{117}$(git_prompt_status)%f$(git_prompt_branch)%F{117}[%f%F{117}%~%f%F{117}]%f$ '
+PROMPT='%F{yellow}%D{%H:%M:%S}%f $(git_prompt_branch) %F{cyan}[%f%F{cyan}%~%f%F{cyan}]%f$ '
 
 # Plugins
 if [ -f "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
