@@ -40,8 +40,14 @@ git_prompt_status() {
   fi
 }
 
+git_prompt_branch() {
+  if [[ -n ${vcs_info_msg_0_} ]]; then
+    echo "%F{152}[%f%F{152}${vcs_info_msg_0_}%f%F{152}]%f"
+  fi
+}
+
 # Catppuccin Mocha colors: 117=sky/blue, 152=teal
-PROMPT='%F{117}$(git_prompt_status)%F{152}[%f%F{152}${vcs_info_msg_0_}%f%F{152}]%f%F{117}[%f%F{117}%~%f%F{117}]%f$ '
+PROMPT='%F{117}$(git_prompt_status)%f$(git_prompt_branch)%F{117}[%f%F{117}%~%f%F{117}]%f$ '
 
 # Plugins
 if [ -f "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
