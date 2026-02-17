@@ -28,6 +28,8 @@ require("mason-lspconfig").setup({
 		"ts_ls",
 		"yamlls",
 		"jsonls",
+		"jdtls", -- Java
+		"marksman", -- Markdown
 	},
 	handlers = {
 		lsp_zero.default_setup,

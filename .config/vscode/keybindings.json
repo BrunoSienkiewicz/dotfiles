@@ -1,0 +1,276 @@
+[
+  // Fuzzy Finding
+  {
+    "key": "space f f",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space f g",
+    "command": "workbench.action.findInFiles",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space f b",
+    "command": "workbench.action.showAllEditors",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space f h",
+    "command": "workbench.action.showCommands",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space f r",
+    "command": "references-view.findReferences",
+    "when": "editorHasReferenceProvider && editorTextFocus"
+  },
+  {
+    "key": "space f s",
+    "command": "workbench.action.gotoSymbol",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen"
+  },
+
+  // LSP (l) - Language Server Protocol Actions
+  {
+    "key": "space l d",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space l a",
+    "command": "editor.action.quickFix",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space l r",
+    "command": "editor.action.rename",
+    "when": "editorHasRenameProvider && editorTextFocus"
+  },
+  {
+    "key": "space l f",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus"
+  },
+  {
+    "key": "g d",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus"
+  },
+  {
+    "key": "g shift+d",
+    "command": "editor.action.revealDeclaration",
+    "when": "editorHasDeclarationProvider && editorTextFocus"
+  },
+  {
+    "key": "g i",
+    "command": "editor.action.goToImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus"
+  },
+  {
+    "key": "shift+k",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "[ d",
+    "command": "editor.action.marker.prevInFiles",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "] d",
+    "command": "editor.action.marker.nextInFiles",
+    "when": "editorTextFocus"
+  },
+
+  // SPLITS/WINDOWS (s, v, h)
+  {
+    "key": "space v",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space h",
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space s c",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight",
+    "when": "editorTextFocus"
+  },
+
+  // BUFFERS (b) - Tab/Editor Management
+  {
+    "key": "space b d",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space b n",
+    "command": "workbench.action.nextEditor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space b p",
+    "command": "workbench.action.previousEditor",
+    "when": "editorTextFocus"
+  },
+
+  // ============================================================================
+  // FILE EXPLORER (e)
+  // ============================================================================
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.view.explorer",
+    "when": "editorTextFocus"
+  },
+
+  // ============================================================================
+  // SEARCH/REPLACE (s)
+  // ============================================================================
+  {
+    "key": "space s",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space s n",
+    "command": "editor.action.nextMatchFindAction",
+    "when": "editorTextFocus && findInputFocussed"
+  },
+
+  // ============================================================================
+  // CLIPBOARD - System Clipboard Operations
+  // ============================================================================
+  {
+    "key": "space y",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space shift+y",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "space p",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorTextFocus"
+  },
+
+  // ============================================================================
+  // QUALITY OF LIFE
+  // ============================================================================
+  {
+    "key": "shift+j",
+    "command": "editor.action.joinLines",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "cursorPageDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+u",
+    "command": "cursorPageUp",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+u",
+    "command": "redo",
+    "when": "editorTextFocus"
+  },
+
+  // ============================================================================
+  // JUPYTER NOTEBOOK SPECIFIC
+  // ============================================================================
+  {
+    "key": "space j r",
+    "command": "jupyter.runallcells",
+    "when": "notebookType == 'jupyter-notebook'"
+  },
+  {
+    "key": "space j c",
+    "command": "jupyter.runcurrentcell",
+    "when": "notebookType == 'jupyter-notebook' || editorLangId == 'python'"
+  },
+  {
+    "key": "space j n",
+    "command": "notebook.cell.insertCodeCellBelow",
+    "when": "notebookType == 'jupyter-notebook'"
+  },
+  {
+    "key": "space j d",
+    "command": "notebook.cell.delete",
+    "when": "notebookType == 'jupyter-notebook'"
+  },
+  {
+    "key": "space j k",
+    "command": "notebook.focusPreviousEditor",
+    "when": "notebookType == 'jupyter-notebook'"
+  },
+  {
+    "key": "space j j",
+    "command": "notebook.focusNextEditor",
+    "when": "notebookType == 'jupyter-notebook'"
+  },
+
+  // ============================================================================
+  // MARKDOWN SPECIFIC
+  // ============================================================================
+  {
+    "key": "space m p",
+    "command": "markdown.showPreview",
+    "when": "editorLangId == 'markdown'"
+  },
+  {
+    "key": "space m s",
+    "command": "markdown.showPreviewToSide",
+    "when": "editorLangId == 'markdown'"
+  },
+  {
+    "key": "space m b",
+    "command": "markdown.extension.editing.toggleBold",
+    "when": "editorTextFocus && editorLangId == 'markdown'"
+  },
+  {
+    "key": "space m i",
+    "command": "markdown.extension.editing.toggleItalic",
+    "when": "editorTextFocus && editorLangId == 'markdown'"
+  },
+  {
+    "key": "space m c",
+    "command": "markdown.extension.editing.toggleCodeBlock",
+    "when": "editorTextFocus && editorLangId == 'markdown'"
+  }
+]

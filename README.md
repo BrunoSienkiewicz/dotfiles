@@ -14,21 +14,26 @@ Clean, fast dotfiles for developers. Optimized for Python, Go, and modern softwa
 
 **ZSH** - Minimal shell with `[git_branch] [folder_name] $` prompt  
 **Tmux** - Session manager (Prefix: `Ctrl+a`)  
-**Neovim** - Fast editor with LSP, debugging, and testing support
+**Neovim** - Fast editor with LSP, debugging, and testing support  
+**VS Code** - Optional configuration matching Neovim setup (see `.config/vscode/`)
 
 ## Features
 
 ### Language Support
-- **Python**: pyright LSP, black/isort formatting, ruff linting, pytest integration
+- **Python**: pyright LSP, black/isort formatting, ruff linting, pytest integration, Jupyter notebooks
 - **Go**: gopls LSP, gofumpt formatting, golangci-lint, test integration  
-- **JavaScript/TypeScript**: ts_ls LSP, prettier formatting
-- **Rust, C/C++, Lua, Bash**: Full LSP support
+- **JavaScript/TypeScript**: ts_ls LSP, prettier formatting, ESLint support
+- **Java**: jdtls LSP, Maven/Gradle support, JUnit/TestNG integration
+- **C/C++**: clangd LSP, CMake support, clang-format formatting
+- **Markdown**: marksman LSP, live preview, Mermaid diagrams, math support
+- **Rust, Lua, Bash, YAML, JSON**: Full LSP support
 
 ### Development Tools
 - **Debugging**: DAP support for Python and Go with UI
 - **Testing**: Integrated test runner with neotest (pytest, go test)
 - **Code Quality**: Linters, formatters, type checkers
 - **YAML/K8s**: Basic support for manifests when needed
+- **Notebooks**: Jupyter support for interactive Python development
 
 ## Quick Start
 
@@ -100,7 +105,8 @@ Prefix: `Ctrl+a`
 **Add LSP servers**: Edit `.config/nvim/after/plugin/lsp.lua`  
 **Change theme**: Edit `.config/nvim/after/plugin/catppuccin.lua`  
 **Add aliases**: Edit `.aliases`  
-**Modify prompt**: Edit `.config/zsh/.zshrc`
+**Modify prompt**: Edit `.config/zsh/.zshrc`  
+**VS Code setup**: See `.config/vscode/README.md` for VS Code configuration matching Neovim
 
 ## Troubleshooting
 
@@ -116,6 +122,7 @@ Prefix: `Ctrl+a`
 .config/
   ├── nvim/      # Neovim config
   ├── tmux/      # Tmux config
+  ├── vscode/    # VS Code config (optional)
   └── zsh/       # ZSH config
 .aliases         # Shell aliases
 .zshenv          # Environment vars
