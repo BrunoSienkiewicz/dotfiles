@@ -43,12 +43,12 @@ git_prompt_status() {
 git_prompt_branch() {
   if [[ -n ${vcs_info_msg_0_} ]]; then
     local star=$(git_prompt_status)
-    echo "${star}%F{green}<%f%F{green}${vcs_info_msg_0_}%f%F{green}>%f"
+    echo "${star}%F{green}<%f%F{green}${vcs_info_msg_0_}%f%F{green}>%f "
   fi
 }
 
 # Catppuccin Mocha colors: 117=sky/blue, 152=teal
-PROMPT='%F{yellow}%D{%H:%M:%S}%f $(git_prompt_branch) %F{cyan}[%f%F{cyan}%~%f%F{cyan}]%f$ '
+PROMPT='%F{yellow}%D{%H:%M:%S}%f $(git_prompt_branch)%F{cyan}[%f%F{cyan}%~%f%F{cyan}]%f$ '
 
 # Plugins
 if [ -f "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
