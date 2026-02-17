@@ -24,24 +24,18 @@
     "bierner.markdown-mermaid",
     "bierner.markdown-preview-github-styles",
     
-    // C++ Support
+    // Language Support
     "llvm-vs-code-extensions.vscode-clangd",
     "ms-vscode.cpptools-extension-pack",
     "ms-vscode.cmake-tools",
-    
-    // Java Support
     "redhat.java",
     "vscjava.vscode-java-debug",
     "vscjava.vscode-java-test",
     "vscjava.vscode-java-dependency",
     "vscjava.vscode-maven",
     "vscjava.vscode-gradle",
-    
-    // TypeScript Enhanced Support
     "dbaeumer.vscode-eslint",
     "ms-vscode.vscode-typescript-next",
-    
-    // Additional Productivity
     "christian-kohler.path-intellisense",
     "formulahendry.code-runner",
     "streetsidesoftware.code-spell-checker"
