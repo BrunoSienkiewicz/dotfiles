@@ -33,8 +33,10 @@ return require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
-		"echasnovski/mini.files",
-		version = "*",
+	  'stevearc/oil.nvim',
+	  opts = {},
+	  dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+	  lazy = false,
 	},
 
 	-- Git

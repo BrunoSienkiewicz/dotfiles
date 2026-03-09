@@ -45,7 +45,6 @@ require("mason-tool-installer").setup({
 		"isort",
 		"stylua",
 		"shfmt",
-		"gofumpt",
 		"eslint_d",
 		"ruff",
 		"mypy",

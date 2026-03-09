@@ -44,11 +44,7 @@ vim.keymap.set("n", "<leader>bn", "<cmd>bn<CR>", { desc = "Buffer Next" })
 vim.keymap.set("n", "<leader>bp", "<cmd>bp<CR>", { desc = "Buffer Previous" })
 
 -- File Explorer (e)
-vim.keymap.set("n", "<C-b>", function()
-	if not require("mini.files").close() then
-		require("mini.files").open()
-	end
-end, { desc = "Toggle File Explorer" })
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Search/Replace (s)
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search Replace" })
